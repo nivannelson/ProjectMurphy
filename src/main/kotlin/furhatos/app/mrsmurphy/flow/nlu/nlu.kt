@@ -144,7 +144,8 @@ class ProjectName : EnumEntity(){
 }
 
 class PersonInCharge(
-    val project: ProjectName? = null) : Intent() {
+    val project: String? = null) : Intent() {
+
     override fun getExamples(lang: Language): List<String> {
         return listOf("@ProjectName",
             "Who is the in-charge of @ProjectName?",
@@ -154,4 +155,5 @@ class PersonInCharge(
             "Whom should I contact to get more information about @ProjectName?"
             )
     }
+
 }
