@@ -47,6 +47,7 @@ repositories {
 
 dependencies {
     compile 'com.furhatrobotics.furhatos:furhat-commons:2.5.0'
+    implementation 'com.theokanning.openai-gpt3-java:client:+'
 }
 
 jar {

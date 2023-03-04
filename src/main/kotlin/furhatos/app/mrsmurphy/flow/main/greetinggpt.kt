@@ -1,5 +1,6 @@
 package furhatos.app.mrsmurphy.flow.main
 
+
 import furhatos.app.mrsmurphy.flow.Parent
 import furhatos.flow.kotlin.State
 import furhatos.flow.kotlin.furhat
@@ -8,7 +9,7 @@ import furhatos.flow.kotlin.state
 import furhatos.nlu.common.No
 import furhatos.nlu.common.Yes
 
-val Greeting: State = state(Parent) {
+val Greetingpt: State = state(Parent) {
     onEntry {
         furhat.ask("Should I say Hello World?")
     }
@@ -28,4 +29,3 @@ val Greeting: State = state(Parent) {
     }
 
 }
-
