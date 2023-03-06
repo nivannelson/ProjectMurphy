@@ -5,10 +5,7 @@ import furhatos.app.mrsmurphy.flow.main.Greeting
 import furhatos.app.mrsmurphy.flow.main.Robotarium
 import furhatos.app.mrsmurphy.setting.DISTANCE_TO_ENGAGE
 import furhatos.app.mrsmurphy.setting.MAX_NUMBER_OF_USERS
-import furhatos.flow.kotlin.State
-import furhatos.flow.kotlin.furhat
-import furhatos.flow.kotlin.state
-import furhatos.flow.kotlin.users
+import furhatos.flow.kotlin.*
 
 val Init: State = state {
     init {
@@ -17,6 +14,7 @@ val Init: State = state {
     }
     onEntry {
         /** start interaction */
+        dialogLogger.startSession()
         when {
             furhat.isVirtual() -> goto(Robotarium) // Convenient to bypass the need for user when running Virtual Furhat
             users.hasAny() -> {
@@ -25,6 +23,7 @@ val Init: State = state {
             }
             else -> goto(Idle)
         }
+        dialogLogger.endSession()
     }
 
 }

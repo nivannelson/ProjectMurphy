@@ -7,7 +7,7 @@ import furhatos.flow.kotlin.*
 import furhatos.gestures.Gesture
 import furhatos.gestures.Gestures
 
-val serviceKey = "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"
+val serviceKey = "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"
 
 fun getNLGResponseFromGPT(input: String): String {
     var conversationInput = input + "\n Human asked the receptionist to talk about healthcare research happening inside the National Robotarium. Use the above information to create an informal conversation that can be used by a social receptionist to say it as a response to a user without greeting them or wishing within 50 words."
