@@ -22,7 +22,8 @@ class NationalRobotarium : Intent() {
             "Explain the brief history of robotarium",
             "What do you know about this building?",
             "What do you know about National robotarium?",
-            "What do you know about robotarium?"
+            "What do you know about robotarium?",
+            "What is the National Robotarium"
             )
     }
 }
@@ -53,7 +54,8 @@ class Researches : Intent() {
             "Can you tell me about the current researches in this building?",
             "Can you tell me about the current researches in National robotarium?",
             "What are the researches going on the robotarium?",
-            "Major researches in the National Robotarium"
+            "Major researches in the National Robotarium",
+            "What is the primary focus of research at the National Robotarium"
 
         )
     }
