@@ -3,16 +3,28 @@ package furhatos.app.mrsmurphy.flow.main
 import ReadFile
 import furhatos.app.mrsmurphy.flow.Parent
 import furhatos.app.mrsmurphy.flow.nlu.*
-import furhatos.flow.kotlin.State
-import furhatos.flow.kotlin.furhat
-import furhatos.flow.kotlin.onResponse
-import furhatos.flow.kotlin.state
+import furhatos.flow.kotlin.*
 import furhatos.gestures.Gestures
+import furhatos.nlu.common.DontKnow
 import furhatos.nlu.common.No
 import furhatos.nlu.common.Yes
 
+
+var firstEntry = true
+
 val Robotarium: State = state(Parent) {
-    onEntry { furhat.listen() }
+    onEntry {
+        if(firstEntry){
+            var intent = "aboutmurphy"
+            var response = ReadFile().getResponse(intent, "")
+            furhat.ask(response)
+            firstEntry = false
+        }
+    }
+    onReentry {
+        furhat.listen()
+    }
+
     onResponse<NationalRobotarium> {
         var intent = ((it.intent).toString()).dropLast(2)
         var response = ReadFile().getResponse(intent, "")
@@ -73,5 +85,21 @@ val Robotarium: State = state(Parent) {
         var response = ReadFile().getResponse(key, "")
         furhat.ask(getNLGResponseFromGPT(response))
     }
+
+    onResponse<DontKnow> {
+        furhat.say(getOpenDomainResponse())
+        furhat.listen()
+
+    }
+
+    onResponse {
+        furhat.say(getOpenDomainResponse())
+        furhat.listen()
+
+    }
+    onNoResponse {
+        furhat.listen()
+    }
+
 }
 
