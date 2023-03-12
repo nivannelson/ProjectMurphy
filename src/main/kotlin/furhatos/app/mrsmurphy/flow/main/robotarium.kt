@@ -10,7 +10,7 @@ import furhatos.gestures.Gestures
 import furhatos.nlu.common.DontKnow
 import furhatos.nlu.common.No
 import furhatos.nlu.common.Yes
-import parseResponse
+import theparser
 import java.time.LocalTime
 
 
@@ -64,63 +64,90 @@ val Robotarium: State = state(Parent) {
         println("intents triggered:"+intent)
         response = ReadFile().getResponse(intent, "")
         //goto(newfunction(response))
-        call(parseResponse(getNLGResponseFromGPT(response)))
+
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
     }
 
     onResponse<AboutMurphy>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
         response = ReadFile().getResponse(intent, "")
-        call(parseResponse(getNLGResponseFromGPT(response)))
+
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
     }
 
     onResponse<Researches>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
         response = ReadFile().getResponse(intent, "")
-        call(parseResponse(getNLGResponseFromGPT(response)))
+
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
     }
 
     onResponse<WhatsNew>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
         response = ReadFile().getResponse(intent, "")
-        call(parseResponse(getNLGResponseFromGPT(response)))
+
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
     }
 
     onResponse<HeathCare>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
         response = ReadFile().getResponse(intent, "")
-        call(parseResponse(getNLGResponseFromGPT(response)))
+
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
     }
 
     onResponse<Manufacturing>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
         response = ReadFile().getResponse(intent, "")
-        call(parseResponse(getNLGResponseFromGPT(response)))
+
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
     }
 
     onResponse<Offshore>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
         response = ReadFile().getResponse(intent, "")
-        call(parseResponse(getNLGResponseFromGPT(response)))
+
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
     }
 
     onResponse<Agriculture>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
         response = ReadFile().getResponse(intent, "")
-        call(parseResponse(getNLGResponseFromGPT(response)))
+
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
     }
 
     onResponse<ConversationalAgents>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
         response = ReadFile().getResponse(intent, "")
-        call(parseResponse(getNLGResponseFromGPT(response)))
+
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
     }
 
     onResponse<PersonInCharge>(){
@@ -128,21 +155,91 @@ val Robotarium: State = state(Parent) {
         println("intents triggered:"+intent)
         var key = intent + " - ${it.intent.project}"
         response = ReadFile().getResponse(key, "")
-        call(parseResponse(getNLGResponseFromGPT(response)))
+
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
     }
 
     onResponse<DontKnow> {
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
-        furhat.say(getNLGResponseFromGPT(response))
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
         furhat.listen()
 
     }
-
-    onResponse {
+    onResponse<Cafe> {
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
-        furhat.say(getNLGResponseFromGPT(response))
+        response=" there is no cafe inside robotarium -(if on further ask) presence of coffe machine in the building - cafe in the unversity like elements,piece "
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
+
+    }
+    onResponse<Toilet> {
+        var intent = ((it.intent).toString()).dropLast(2)
+        response=" there is toilets inside robotarium -(if on further ask) just take the left "
+        println("intents triggered:"+intent)
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
+
+    }
+    onResponse<playgame> {
+        call(AskQuestion())
+
+    }
+    onResponse<Appretiate> {
+        var intent = ((it.intent).toString()).dropLast(2)
+        response=" aww thankyou make murphy apretiate the user back maybe even greet the user "
+        println("intents triggered:"+intent)
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
+
+    }
+    onResponse<MyName> {
+        var intent = ((it.intent).toString()).dropLast(2)
+        println("intents triggered:"+intent)
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
+
+    }
+    onResponse<Wifi> {
+        var intent = ((it.intent).toString()).dropLast(2)
+        response=""
+        println("intents triggered:"+intent)
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
+
+    }
+    onResponse<GoodBye> {
+        var intent = ((it.intent).toString()).dropLast(2)
+        response= "user wants to go away do "
+        println("intents triggered:"+intent)
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
+
+    }
+    onResponse<Alright> {
+        var intent = ((it.intent).toString()).dropLast(2)
+        println("intents triggered:"+intent)
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
+    }
+
+    onResponse {
+
+        var intent = ((it.intent).toString()).dropLast(2)
+        println("intents triggered:"+intent)
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
         furhat.listen()
 
     }
@@ -162,11 +259,15 @@ val Robotarium: State = state(Parent) {
 }
 
 fun newfunction(response: String) : State = state(Parent){
-    onEntry {call(parseResponse(getNLGResponseFromGPT(response)))  }
+    onEntry {
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen() }
     onResponse {
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
-        furhat.say(getNLGResponseFromGPT(response))
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
         furhat.listen()
 
     }

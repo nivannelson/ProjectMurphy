@@ -9,6 +9,7 @@ import furhatos.flow.kotlin.*
 import furhatos.gestures.Gestures
 import furhatos.nlu.common.RequestRepeat
 import furhatos.nlu.common.Yes
+import theparser
 
 var onetime = true
 fun AskQuestion(): State = state(parent = Parent) {
@@ -45,7 +46,8 @@ fun AskQuestion(): State = state(parent = Parent) {
                 { furhat.say("that was ${furhat.voice.emphasis("correct")}") }
             )
 
-            furhat.say(getNLGResponseFromGPT("the correct answer is " + QuestionSet.current.makeans()+" give a brief explanation or an amusing fact about this"))
+            var replygpt= getNLGResponseFromGPT(("the correct answer is  "+ QuestionSet.current.makeans() +"give a brief explanation or an amusing fact about this"))
+            call(theparser(replygpt))
             goto(Robotarium)
             /*
             If the user answers incorrect, we give another user the chance of answering if one is present in the game.
@@ -54,7 +56,8 @@ fun AskQuestion(): State = state(parent = Parent) {
         } else {
             furhat.gesture(Gestures.BrowFrown)
             furhat.say("Sorry, that was ${furhat.voice.emphasis("not")} correct")
-            furhat.say(getNLGResponseFromGPT("the correct answer is " + QuestionSet.current.makeans()+" give a brief explanation or an amusing fact about this " + QuestionSet.current.desc))
+            var replygpt= getNLGResponseFromGPT(("the correct answer is  "+ QuestionSet.current.makeans() +"give a brief explanation or an amusing fact about this"))
+            call(theparser(replygpt))
             goto(Robotarium)
 
             /* Find another user that has not answered this question and if so, asks them.
@@ -67,8 +70,8 @@ fun AskQuestion(): State = state(parent = Parent) {
 
         // The users answers that they don't know
         onResponse<DontKnow> {
-            furhat.say(getNLGResponseFromGPT("the correct answer is " + QuestionSet.current.makeans()+" give a brief explanation or an amusing fact about this"))
-
+            var replygpt= getNLGResponseFromGPT(("the correct answer is  "+ QuestionSet.current.makeans() +"give a brief explanation or an amusing fact about this"))
+            call(theparser(replygpt))
         }
 
         onResponse<RequestRepeat> {
@@ -102,7 +105,9 @@ fun AskQuestion(): State = state(parent = Parent) {
 
     }
     onResponse {
-        furhat.say(getNLGResponseFromGPT("the correct answer is  "+ QuestionSet.current.makeans() +"give a brief explanation or an amusing fact about this"))
+
+        var replygpt= getNLGResponseFromGPT(("the correct answer is  "+ QuestionSet.current.makeans() +"give a brief explanation or an amusing fact about this"))
+        call(theparser(replygpt))
         goto(Robotarium)
     }
     onNoResponse {

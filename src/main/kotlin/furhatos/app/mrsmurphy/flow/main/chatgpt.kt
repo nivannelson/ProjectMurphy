@@ -8,7 +8,7 @@ import furhatos.gestures.Gesture
 import furhatos.gestures.Gestures
 import java.io.File
 
-val serviceKey = "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"
+val serviceKey = "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"
 
 
 /*fun getOpenDomainResponse(): String {
@@ -66,7 +66,7 @@ fun getNLGResponseFromGPT(input: String): String {
             else -> null
         }
     }.joinToString(separator = "\n")
-    var conversationInput = "a receptionist called murphy at a place called the national robotarium is talking to a guy generate a casual conversation responce.Information given below maybe used  \n"+input + "\n  The conversation history with human and Murphy is also provided below\n"+history+"\nUse the above information to create an informal conversation that can be used by a social receptionist to say it as a response to a user without greeting them or wishing.Dont give \"Murphy:\" only the dialogue.Summarise the responce to be small and give limited information"
+    var conversationInput = "a receptionist called murphy at a place called the national robotarium is talking to a guy generate a casual conversation response with emojis that represent the gestures of the receptionist ( use :happy:,:sad:).Information given below maybe used  \n"+input + "\n  The conversation history with human and Murphy is also provided below\n"+history+"\nUse the above information to create an informal conversation that can be used by a social receptionist to say it as a response to a user without greeting them or wishing.Dont give \"Murphy:\" only the dialogue.Summarise the responce within 3 sentence and give limited information"
     var response = ""
     val lengthofprompt=conversationInput.length
     // Read more about these settings: https://beta.openai.com/docs/introduction

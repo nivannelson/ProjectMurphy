@@ -231,3 +231,49 @@ class DontKnow : Intent() {
         )
     }
 }
+
+class Wifi() : Intent() {
+    override fun getExamples(lang: Language): List<String> {
+        return listOf("wifi", "internet", "I need to connect to the wifi", "Can I connect to the internet?" ,"I need internet connexion to check my emails?", "I don't have internet on my phone", "I need wifi to get the Q R code", "I need to connect to the wifi", "I need Wi-Fi to check my emails", "I need Wi-Fi to get the key")
+    }
+}
+
+class AllRight() : Intent() {
+    override fun getExamples(lang: Language): List<String> {
+        return listOf("it's all right", "it's okay", "I am just typing my name", "I am looking for the email" ,"I am slow", "I am entering my details", "I found the options", "I am good", "I am typing", "I am almost done", "Let me check", "I will check", "I need to check my emails", "I will check my emails", "hold on a second", "I am checking", "I need to check", "fine")
+    }
+}
+
+class Cafe() : Intent() {
+    override fun getExamples(lang: Language): List<String> {
+        return listOf("cafe", "tea", "I need a coffee", "Do you have a restaurant?", "Do you have a cafe?", "Where is the closest cafe?", "Which way is the cafe?", "is there a cafe in the building?")
+    }
+}
+
+class Toilet() : Intent() {
+    override fun getExamples(lang: Language): List<String> {
+        return listOf("Loo","Bathroom", "toilet", "Where is the closest bathroom?", "Which way is the toilet?", "Do you have a toilet?", "Where is the closest toilet?", "Which way is the showers?", "is there a bathroom around here?", "yes I need the way to the" )
+    }
+}
+
+class playgame : Intent(){
+    override fun getExamples(lang: Language): List<String> {
+        return listOf("I am bored","Do you have any games","can we play something i dont have anything to do","play a game maybe")}}
+
+class Appretiate : Intent(){
+    override fun getExamples(lang: Language): List<String> {
+        return listOf("Appretiate","Wow that is interesting","thats a fun fact","cool","that was awesome","interesting","i love you","love","lovely","amazing")}}
+
+class MyName : Intent(){
+    override fun getExamples(lang: Language): List<String> {
+        return listOf("Loo","Bathroom", "toilet", "Where is the closest bathroom?", "Which way is the toilet?", "Do you have a toilet?", "Where is the closest toilet?", "Which way is the showers?", "is there a bathroom around here?", "yes I need the way to the" )
+    }
+}
+
+class Alright : Intent(){
+    override fun getExamples(lang: Language): List<String> {
+        return listOf("alright","Fine","ok","good","fine","its ok","no worries","no issues","cheers")}}
+
+class GoodBye : Intent(){
+    override fun getExamples(lang: Language): List<String> {
+        return listOf("Thank you for your time","Goodbye","bye","cya","see you")}}
