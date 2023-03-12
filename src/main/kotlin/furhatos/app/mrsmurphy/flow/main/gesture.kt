@@ -34,8 +34,7 @@ fun parseResponse(response: String){
         if(res != null && res != ""){
             if(res.equals(";")){
                 val byteArry = ((emojis[numEmo]).toByteArray())
-                println(((emojis[numEmo]).toByteArray()))
-                println(emojis[numEmo])
+                gesture(byteArry)
                 numEmo++
             }
             else{
