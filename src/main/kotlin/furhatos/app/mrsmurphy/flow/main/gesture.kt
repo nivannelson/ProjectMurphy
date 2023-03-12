@@ -1,5 +1,8 @@
 import furhatos.flow.kotlin.furhat
 import furhatos.gestures.Gestures
+import furhatos.flow.kotlin.State
+import furhatos.flow.kotlin.state
+import org.junit.Assert
 
 fun gesture(code: String): State = state {
     onEntry {
