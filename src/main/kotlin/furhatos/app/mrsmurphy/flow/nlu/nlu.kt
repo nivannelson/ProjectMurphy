@@ -180,27 +180,6 @@ class ProjectNameIntent(): Intent() {
 
 }
 
-class ProjectName : EnumEntity(){
-    override fun getEnum(lang: Language): List<String> {
-        return listOf("HeathCare","Manufacturing","offshore","Agriculture","Conversational Agents")
-    }
-}
-
-class PersonInCharge(
-    val project: String? = null) : Intent() {
-
-    override fun getExamples(lang: Language): List<String> {
-        return listOf("ProjectName",
-            "Who is the in-charge of ProjectName",
-            "Who is leading the ProjectName",
-            "heed of ProjectName",
-            "Whom should I contact to get more info about ProjectName",
-            "Whom should I contact to get more information about ProjectName"
-            )
-    }
-
-}
-
 class AnswerOption : EnumEntity {
 
     var correct: Boolean = false
