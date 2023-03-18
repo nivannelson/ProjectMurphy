@@ -4,6 +4,7 @@ import furhatos.app.mrsmurphy.flow.trivia.QuestionSet
 import furhatos.nlu.EnumEntity
 import furhatos.nlu.EnumItem
 import furhatos.nlu.Intent
+import furhatos.nlu.WildcardEntity
 import furhatos.nlu.common.Number
 import furhatos.nlu.wikidata.City
 import furhatos.util.Language
@@ -159,6 +160,24 @@ class ConversationalAgents : Intent() {
             "Researches in Conversational Agents"
         )
     }
+}
+
+class WhichEntity: WildcardEntity("which", ProjectNameIntent())
+
+class ProjectNameIntent(): Intent() {
+
+    var which: WhichEntity? = null
+
+    override fun getExamples(lang: Language): List<String> {
+        return listOf("@which",
+            "Who is the in-charge of @which",
+            "Who is leading the @which",
+            "heed of @which",
+            "Whom should I contact to get more info about @which",
+            "Whom should I contact to get more information about @which"
+        )
+    }
+
 }
 
 class ProjectName : EnumEntity(){

@@ -178,6 +178,11 @@ val Robotarium: State = state(Parent) {
         furhat.listen()
 
     }
+
+    onResponse<ProjectNameIntent>{
+        furhat.say("You want to know about ${it.intent.which}?")
+    }
+
     onResponse<Toilet> {
         var intent = ((it.intent).toString()).dropLast(2)
         response=" there is toilets inside robotarium -(if on further ask) just take the left "
