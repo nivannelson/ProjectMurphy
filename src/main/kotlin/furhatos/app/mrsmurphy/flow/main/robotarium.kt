@@ -255,7 +255,7 @@ val Robotarium: State = state(Parent) {
 
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
-        var replygpt= getNLGResponseFromGPT((response))
+        var replygpt= getNLGResponseFromGPT((response),"C")
         call(theparser(replygpt))
         furhat.listen()
 

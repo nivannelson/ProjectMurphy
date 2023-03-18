@@ -8,15 +8,15 @@ import furhatos.gestures.Gesture
 import furhatos.gestures.Gestures
 import java.io.File
 
-val serviceKey = "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"
-
-fun getNLGResponseFromGPT(input: String,histval: Int = 10): String {
+val serviceKey = "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"
+var conversationInput = "";
+fun getNLGResponseFromGPT(input: String,Domain: String="O",histval: Int = 10): String {
 
     val service = OpenAiService(serviceKey)
     val history = Furhat.dialogHistory.all.takeLast(histval).mapNotNull {
         when (it) {
             is DialogHistory.ResponseItem -> {
-                "Visitor: ${it.response.text}"
+                "User: ${it.response.text}"
             }
             is DialogHistory.UtteranceItem -> {
                 "Murphy: ${it.toText()}"
@@ -24,12 +24,19 @@ fun getNLGResponseFromGPT(input: String,histval: Int = 10): String {
             else -> null
         }
     }.joinToString(separator = "\n")
-    var conversationInput = "The following is a conversation with an AI assistant. The assistants name is Murphy who is helpful, creative, clever, and very friendly.Murphy works as a receptionist in a building called the National robotarium.Murphy has to talk to Visitor." +
-            "if the Visitor asks, she can give information about the building, what all research and labs are in the building, or even general knowledge about robotics,Artificial intelligence."+
-            "Murphy can search web for information in internet if she does not know the answer.These are some additional information which may be used if required :-\n\""+
-            input+"\" Here are some past conversations with the Visitor :-\n\""+
-            history+"\" \nMurphy should now produce a casual and engaging response with appropriate gestures of format \":gesture:\".response should be no longer than 3 sentences murphy is not required to greet Visitor.Murphy: ?"
-
+//    var conversationInput = "The following is a conversation with an AI assistant. The assistants name is Murphy who is helpful, creative, clever, and very friendly.Murphy works as a receptionist in a building called the National robotarium.Murphy has to talk to Visitor." +
+//            "if the Visitor asks, she can give information about the building, what all research and labs are in the building, or even general knowledge about robotics,Artificial intelligence."+
+//            "Murphy can search web for information in internet if she does not know the answer.These are some additional information which may be used if required :-\n\""+
+//            input+"\" Here are some past conversations with the Visitor :-\n\""+
+//            history+"\" \nMurphy should now produce a casual and engaging response with appropriate gestures of format \":gesture:\".response should be no longer than 3 sentences murphy is not required to greet Visitor.Murphy: ?"
+    if (Domain=="O"){
+        conversationInput = input + "\n"+
+                history +"\n" +
+                "using the above context only give a response for Murphy without adding \"Murphy\" else give \"I am not sure\""
+    }else{
+        conversationInput = history +"\n" +
+                "using the above context give a response for Murphy without adding \"Murphy\""
+    }
     var response = ""
     val lengthofprompt=conversationInput.length
     // Read more about these settings: https://beta.openai.com/docs/introduction
@@ -39,14 +46,14 @@ fun getNLGResponseFromGPT(input: String,histval: Int = 10): String {
     var frequencyPenalty = 0.0 // Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.
     var presencePenalty = 0.3 // Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
     val completionRequest = CompletionRequest.builder()
-        .temperature(temperature)
-        .topP(topP)
-        .frequencyPenalty(frequencyPenalty)
-        .presencePenalty(presencePenalty)
-        .maxTokens(maxTokens)
-        .prompt(conversationInput)
-        .echo(true)
-        .build();
+            .temperature(temperature)
+            .topP(topP)
+            .frequencyPenalty(frequencyPenalty)
+            .presencePenalty(presencePenalty)
+            .maxTokens(maxTokens)
+            .prompt(conversationInput)
+            .echo(true)
+            .build();
 
     try {
         val completion = service.createCompletion("text-davinci-003", completionRequest).getChoices().first().text
