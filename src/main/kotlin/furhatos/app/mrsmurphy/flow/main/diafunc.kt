@@ -7,7 +7,7 @@ import furhatos.flow.kotlin.state
 fun whatCanIDo(firstTime: Boolean = false) : State = state {
     onEntry {
         if (firstTime) {
-            furhat.say("My name is Murpy and , ")
+            furhat.say("My name is Murphy, ")
             random(
                 { furhat.say("I'm happy to provide you with information about the building and current research and news on robotics.") },
                 { furhat.say("I'm here to give you a detailed overview of the building and the advancements in robotics happening here.") },

@@ -1,7 +1,6 @@
 package furhatos.app.mrsmurphy.flow
 
 import furhatos.app.mrsmurphy.flow.main.Idle
-import furhatos.app.mrsmurphy.flow.main.Greeting
 import furhatos.app.mrsmurphy.flow.main.Robotarium
 import furhatos.app.mrsmurphy.setting.DISTANCE_TO_ENGAGE
 import furhatos.app.mrsmurphy.setting.MAX_NUMBER_OF_USERS

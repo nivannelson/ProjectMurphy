@@ -104,7 +104,8 @@ class HeathCare : Intent() {
             "Whats happening in the healthcare research",
             "could you tell me about the healthcare research",
             "could you tell me about the healthcare research",
-            "Researches in healthcare"
+            "Researches in healthcare",
+                    "can you tell me about the researches in medical field"
             )
     }
 }
@@ -206,7 +207,8 @@ class RequestRepeatQuestion : Intent() {
         return listOf(
             "what was the question",
             "can you repeat the question",
-            "what was the question again"
+            "what was the question again",
+            "can you please repeat the question"
         )
     }
 }
@@ -258,11 +260,11 @@ class Toilet() : Intent() {
 
 class playgame : Intent(){
     override fun getExamples(lang: Language): List<String> {
-        return listOf("I am bored","Do you have any games","can we play something i dont have anything to do","play a game maybe")}}
+        return listOf("can we play a game","I am bored","Do you have any games","can we play something i dont have anything to do","play a game maybe","can you ask me some questions","can you give another question","can you ask another question","question please","ask another question","another question","quest")}}
 
 class Appretiate : Intent(){
     override fun getExamples(lang: Language): List<String> {
-        return listOf("Appretiate","Wow that is interesting","thats a fun fact","cool","that was awesome","interesting","i love you","love","lovely","amazing")}}
+        return listOf("Appretiate","Cheers mate","Wow that is interesting","Wow thats really good Murphy","thats a fun fact","cool","that was awesome","interesting","i love you","love","lovely","amazing")}}
 
 class MyName : Intent(){
     override fun getExamples(lang: Language): List<String> {

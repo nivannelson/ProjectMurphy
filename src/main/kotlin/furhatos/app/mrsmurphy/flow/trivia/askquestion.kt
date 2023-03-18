@@ -16,7 +16,7 @@ fun AskQuestion(): State = state(parent = Parent) {
 
 
     onEntry {
-        furhat.listen(3000)
+        furhat.listen(15000)
     }
     onResponse({ listOf(Yes(), Absolutely()) }){
         if (onetime == true) {
@@ -46,7 +46,8 @@ fun AskQuestion(): State = state(parent = Parent) {
                 { furhat.say("that was ${furhat.voice.emphasis("correct")}") }
             )
 
-            var replygpt= getNLGResponseFromGPT(("the correct answer is  "+ QuestionSet.current.makeans() +"give a brief explanation or an amusing fact about this"))
+            var replygpt =
+                getNLGResponseFromGPT(("the correct answer is  " + QuestionSet.current.makeans() + "give a brief explanation or an amusing fact about this"))
             call(theparser(replygpt))
             goto(Robotarium)
             /*
@@ -56,7 +57,8 @@ fun AskQuestion(): State = state(parent = Parent) {
         } else {
             furhat.gesture(Gestures.BrowFrown)
             furhat.say("Sorry, that was ${furhat.voice.emphasis("not")} correct")
-            var replygpt= getNLGResponseFromGPT(("the correct answer is  "+ QuestionSet.current.makeans() +"give a brief explanation or an amusing fact about this"))
+            var replygpt =
+                getNLGResponseFromGPT(("the correct answer is  " + QuestionSet.current.makeans() + "give a brief explanation or an amusing fact about this"))
             call(theparser(replygpt))
             goto(Robotarium)
 
@@ -67,11 +69,12 @@ fun AskQuestion(): State = state(parent = Parent) {
 
         }
 
-
+    }
         // The users answers that they don't know
         onResponse<DontKnow> {
             var replygpt= getNLGResponseFromGPT(("the correct answer is  "+ QuestionSet.current.makeans() +"give a brief explanation or an amusing fact about this"))
             call(theparser(replygpt))
+            goto(Robotarium)
         }
 
         onResponse<RequestRepeat> {
@@ -103,7 +106,7 @@ fun AskQuestion(): State = state(parent = Parent) {
         finally moving on if we still don't get it.
      */
 
-    }
+
     onResponse {
 
         var replygpt= getNLGResponseFromGPT(("the correct answer is  "+ QuestionSet.current.makeans() +"give a brief explanation or an amusing fact about this"))

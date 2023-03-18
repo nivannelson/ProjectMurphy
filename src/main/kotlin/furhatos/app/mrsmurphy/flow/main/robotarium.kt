@@ -35,7 +35,8 @@ val Robotarium: State = state(Parent) {
                     furhat.say(greeting)
                 })
             var intent = "aboutmurphy"
-            response = ReadFile().getResponse(intent, "")
+            //response = ReadFile().getResponse(intent, "")
+            response=nlgdata[intent]?.fulldesc.toString()
             UtilsLib.randomNoRepeat(
             { furhat.say("Welcome to the National Robotarium!") },
             { furhat.say("") },
@@ -47,12 +48,14 @@ val Robotarium: State = state(Parent) {
         call(whatCanIDo(true))
         furhat.listen()}
         var intent = "aboutmurphy"
-        response = ReadFile().getResponse(intent, "")
+        //response = ReadFile().getResponse(intent, "")
+        response=nlgdata[intent]?.fulldesc.toString()
             furhat.listen()
         }
     onReentry {
         var intent = "aboutmurphy"
-        response = ReadFile().getResponse(intent, "")
+        //response = ReadFile().getResponse(intent, "")
+        response= nlgdata[intent]?.fulldesc.toString()
         call(whatCanIDo(false))
         furhat.listen()
 
@@ -62,7 +65,8 @@ val Robotarium: State = state(Parent) {
 
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
-        response = ReadFile().getResponse(intent, "")
+        //response = ReadFile().getResponse(intent, "")
+        response=nlgdata[intent]?.fulldesc.toString()
         //goto(newfunction(response))
 
         var replygpt= getNLGResponseFromGPT((response))
@@ -73,7 +77,8 @@ val Robotarium: State = state(Parent) {
     onResponse<AboutMurphy>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
-        response = ReadFile().getResponse(intent, "")
+        //response = ReadFile().getResponse(intent, "")
+        response=nlgdata[intent]?.fulldesc.toString()
 
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
@@ -83,7 +88,8 @@ val Robotarium: State = state(Parent) {
     onResponse<Researches>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
-        response = ReadFile().getResponse(intent, "")
+        //response = ReadFile().getResponse(intent, "")
+        response=nlgdata[intent]?.fulldesc.toString()
 
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
@@ -93,7 +99,8 @@ val Robotarium: State = state(Parent) {
     onResponse<WhatsNew>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
-        response = ReadFile().getResponse(intent, "")
+        //response = ReadFile().getResponse(intent, "")
+        response=nlgdata[intent]?.fulldesc.toString()
 
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
@@ -103,7 +110,8 @@ val Robotarium: State = state(Parent) {
     onResponse<HeathCare>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
-        response = ReadFile().getResponse(intent, "")
+        //response = ReadFile().getResponse(intent, "")
+        response=nlgdata[intent]?.fulldesc.toString()
 
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
@@ -113,7 +121,8 @@ val Robotarium: State = state(Parent) {
     onResponse<Manufacturing>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
-        response = ReadFile().getResponse(intent, "")
+        //response = ReadFile().getResponse(intent, "")
+        response=nlgdata[intent]?.fulldesc.toString()
 
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
@@ -123,7 +132,8 @@ val Robotarium: State = state(Parent) {
     onResponse<Offshore>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
-        response = ReadFile().getResponse(intent, "")
+        //response = ReadFile().getResponse(intent, "")
+        response=nlgdata[intent]?.fulldesc.toString()
 
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
@@ -133,7 +143,8 @@ val Robotarium: State = state(Parent) {
     onResponse<Agriculture>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
-        response = ReadFile().getResponse(intent, "")
+        //response = ReadFile().getResponse(intent, "")
+        response=nlgdata[intent]?.fulldesc.toString()
 
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
@@ -143,14 +154,15 @@ val Robotarium: State = state(Parent) {
     onResponse<ConversationalAgents>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
-        response = ReadFile().getResponse(intent, "")
+        //response = ReadFile().getResponse(intent, "")
+        response=nlgdata[intent]?.fulldesc.toString()
 
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
         furhat.listen()
     }
 
-    onResponse<PersonInCharge>(){
+ /*   onResponse<PersonInCharge>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
         var key = intent + " - ${it.intent.project}"
@@ -159,7 +171,7 @@ val Robotarium: State = state(Parent) {
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
         furhat.listen()
-    }
+    }*/
 
     onResponse<DontKnow> {
         var intent = ((it.intent).toString()).dropLast(2)
@@ -188,6 +200,10 @@ val Robotarium: State = state(Parent) {
 
     }
     onResponse<playgame> {
+        UtilsLib.randomNoRepeat(
+            { furhat.say("Can i ask?") },
+            { furhat.say("i will ask now is that ok?") },
+            { furhat.say("ok, can i ask now") } )
         call(AskQuestion())
 
     }

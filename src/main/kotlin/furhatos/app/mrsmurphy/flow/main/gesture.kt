@@ -16,7 +16,7 @@ fun textgesture(code: String): State = state {
                 ":heart:" -> {println("Smile")
                     furhat.gesture(Gestures.Nod)}
                 ":broken_heart:" -> {println("Smile")
-            furhat.gesture(Gestures.Nod)}
+            furhat.gesture(Gestures.Shake)}
 
                 ":joy:" -> {println("Smile")
                     furhat.gesture(Gestures.Nod)}
@@ -42,7 +42,7 @@ fun textgesture(code: String): State = state {
                 ":angry:" -> {println("Smile")
                     furhat.gesture(Gestures.Nod)}
                 ":cry:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
+                    furhat.gesture(Gestures.Shake)}
                 ":persevere:" -> {println("Smile")
                     furhat.gesture(Gestures.Nod)}
                 ":fearful:" -> {println("Smile")
@@ -78,8 +78,10 @@ fun textgesture(code: String): State = state {
 
 fun theparser(response: String): State = state {
     onEntry {
-        println("inupe value to the funtion"+response)
+        println("inupe value to the funtion:"+response)
+        val remov = Regex("Murphy:|Gesture:")
         val regex = Regex(":\\w+:")
+        val response=  response.replace(remov, "   ^")
         val emojis = regex.findAll(response).map { it.value }.toList()
         val response2=  response.replace(regex, "   ^")
 
@@ -168,9 +170,9 @@ fun parseResponse(response: String): State = state {
         val unicode = StringBuilder()
 
         val response2 = response.replace(emojiRegex, ";")
-        println("the 2 respont ="+response2)
+        //println("the 2 respont ="+response2)
         val splitResponse = response2.split(";")
-        println("the 2 respont ="+splitResponse[0])
+        //println("the 2 respont ="+splitResponse[0])
         val emojis = emojiRegex.findAll(response).map { it.value }.toList()
         var numEmo = 0
         for(res in splitResponse) {
