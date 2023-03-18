@@ -169,10 +169,10 @@ class ProjectNameIntent(): Intent() {
     var which: WhichEntity? = null
 
     override fun getExamples(lang: Language): List<String> {
-        return listOf("@which",
+        return listOf(
             "Who is the in-charge of @which",
             "Who is leading the @which",
-            "heed of @which",
+            "head of @which",
             "Whom should I contact to get more info about @which",
             "Whom should I contact to get more information about @which"
         )
