@@ -150,7 +150,7 @@ val Robotarium: State = state(Parent) {
         furhat.listen()
     }
 
-    onResponse<PersonInCharge>(){
+    /*onResponse<PersonInCharge>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
         var key = intent + " - ${it.intent.project}"
@@ -159,7 +159,7 @@ val Robotarium: State = state(Parent) {
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
         furhat.listen()
-    }
+    }*/
 
     onResponse<DontKnow> {
         var intent = ((it.intent).toString()).dropLast(2)
