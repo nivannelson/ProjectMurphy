@@ -180,7 +180,7 @@ val Robotarium: State = state(Parent) {
     }
 
     onResponse<ProjectNameIntent>{
-        furhat.say("You want to know about ${it.intent.which}?")
+        furhat.say("You want to know about the person incharge of ${it.intent.which}?")
     }
 
     onResponse<Toilet> {
