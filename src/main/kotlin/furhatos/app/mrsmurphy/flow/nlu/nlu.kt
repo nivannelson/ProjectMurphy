@@ -4,7 +4,6 @@ import furhatos.app.mrsmurphy.flow.trivia.QuestionSet
 import furhatos.nlu.EnumEntity
 import furhatos.nlu.EnumItem
 import furhatos.nlu.Intent
-import furhatos.nlu.WildcardEntity
 import furhatos.nlu.common.Number
 import furhatos.nlu.wikidata.City
 import furhatos.util.Language
@@ -163,20 +162,23 @@ class ConversationalAgents : Intent() {
     }
 }
 
-class WhichEntity: WildcardEntity("which", ProjectNameIntent())
+class ProjectName : EnumEntity(){
+    override fun getEnum(lang: Language): List<String> {
+        return listOf("HeathCare","Manufacturing","offshore","Agriculture","Conversational Agents")
+    }
+}
 
-class ProjectNameIntent(): Intent() {
-
-    var which: WhichEntity? = null
+class PersonInCharge(
+    val project: String? = null) : Intent() {
 
     override fun getExamples(lang: Language): List<String> {
-        return listOf(
-            "Who is the in-charge of @which",
-            "Who is leading the @which",
-            "head of @which",
-            "Whom should I contact to get more info about @which",
-            "Whom should I contact to get more information about @which"
-        )
+        return listOf("ProjectName",
+            "Who is the in-charge of ProjectName",
+            "Who is leading the ProjectName",
+            "heed of ProjectName",
+            "Whom should I contact to get more info about ProjectName",
+            "Whom should I contact to get more information about ProjectName"
+            )
     }
 
 }
