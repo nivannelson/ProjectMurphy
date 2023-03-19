@@ -7,74 +7,102 @@ import furhatos.gestures.Gestures
 fun textgesture(code: String): State = state {
     onEntry {
         when (code) {
-            ":smiley:" -> {println("Smile")
-            furhat.gesture(Gestures.Nod)}
-             ":thumbsup:"-> {println("Happy")
-                 furhat.gesture(Gestures.Nod)}
-            ":smile:" -> {println("Smile")
+            ":angry:" -> {println("angry")
+                furhat.gesture(Gestures.ExpressSad)}
+
+            ":broken_heart:" -> {println("broken_heart")
+                furhat.gesture(Gestures.ExpressSad)}
+
+            ":confused:" -> {println("confused")
+                furhat.gesture(Gestures.Thoughtful)}
+            ":cry:" -> {println("cry")
+                furhat.gesture(Gestures.ExpressSad)}
+
+            ":disappointed:" -> {println("disappointed")
+                furhat.gesture(Gestures.ExpressSad)}
+
+            ":expressionless:" -> {println("expressionless")
+                furhat.gesture(Gestures.Smile)}
+
+            ":fearful:" -> {println("fearful")
+                furhat.gesture(Gestures.ExpressFear)}
+            ":flushed:" -> {println("flushed")
+                furhat.gesture(Gestures.BrowRaise)
+                furhat.gesture(Gestures.Surprise)}
+
+            ":heart_eyes:" -> {println("heart_eyes")
+                furhat.gesture(Gestures.BigSmile)}
+            ":heart:" -> {println("heart")
+                furhat.gesture(Gestures.BigSmile)}
+
+            ":innocent:" -> {println("innocent")
+                furhat.gesture(Gestures.BigSmile)}
+
+            ":joy:" -> {println("joy")
+                furhat.gesture(Gestures.BigSmile)}
+
+            ":kissing_heart:" -> {println("kissing_heart")
+                furhat.gesture(Gestures.BigSmile)}
+
+            ":laughing:" -> {println("laughing")
+                furhat.gesture(Gestures.BigSmile)}
+
+            ":no_mouth:" -> {println("no_mouth")
+                furhat.gesture(Gestures.Smile)}
+            ":nerd_face:" -> {println("nerd_face")
+                furhat.gesture(Gestures.Smile)}
+
+            ":ok_woman:" -> {println("ok_woman")
                 furhat.gesture(Gestures.Nod)}
-                ":heart:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":broken_heart:" -> {println("Smile")
-            furhat.gesture(Gestures.Shake)}
+            ":open_mouth:" -> {println("open_mouth")
+                furhat.gesture(Gestures.Oh)}
 
-                ":joy:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
+            ":persevere:" -> {println("persevere")
+                furhat.gesture(Gestures.ExpressSad)}
 
-                ":smiley:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":slight_smile:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":sweat_smile:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":laughing:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":wink:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":sweat:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":kissing_heart:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":stuck_out_tongue_winking_eye:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":disappointed:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":angry:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":cry:" -> {println("Smile")
-                    furhat.gesture(Gestures.Shake)}
-                ":persevere:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":fearful:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":flushed:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":dizzy_face:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":ok_woman:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":innocent:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":sunglasses:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":expressionless:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":confused:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":stuck_out_tongue:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":open_mouth:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
-                ":no_mouth:" -> {println("Smile")
-                    furhat.gesture(Gestures.Nod)}
+            ":robot:" -> {println("robot")
+                furhat.gesture(Gestures.Smile)}
+            ":robot_head:" -> {println("robot_head")
+                furhat.gesture(Gestures.Smile)}
 
-            else -> "Invalid day."
+            ":stuck_out_tongue:" -> {println("stuck_out_tongue")
+                furhat.gesture(Gestures.Smile)}
+            ":sunglasses:" -> {println("sunglasses")
+                furhat.gesture(Gestures.BigSmile)}
+            ":stuck_out_tongue_winking_eye:" -> {println("stuck_out_tongue_winking_eye")
+                furhat.gesture(Gestures.Wink)
+                furhat.gesture(Gestures.BigSmile)}
+            ":smile:" -> {println("Smile")
+                furhat.gesture(Gestures.BigSmile)}
+            ":sweat:" -> {println("sweat")
+                furhat.gesture(Gestures.Nod)}
+            ":sweat_smile:" -> {println("sweat_smile")
+                furhat.gesture(Gestures.BigSmile)}
+            ":slight_smile:" -> {println("slight_smile")
+                furhat.gesture(Gestures.BigSmile)}
+            ":smiley:" -> {println("Smile")
+                furhat.gesture(Gestures.BigSmile)}
+
+            ":thoughtful:" -> {println("thoughtful")
+                furhat.gesture(Gestures.Thoughtful)}
+            ":thumbs_up:"-> {println("thumbs_up")
+                furhat.gesture(Gestures.Nod)}
+            ":thumbs_down:"-> {println("thumbs_down")
+                furhat.gesture(Gestures.Shake)}
+            ":thinking_face:"-> {println("thinking_face")
+                furhat.gesture(Gestures.Thoughtful)}
+
+            ":wink:" -> {println("wink")
+                furhat.gesture(Gestures.Wink)}
+
+            else ->print("not in gesture list")
         }
         print("gesture is called")
         terminate()
-        }
-
     }
+
+}
+
 
 fun theparser(response: String): State = state {
     onEntry {
@@ -106,7 +134,7 @@ fun theparser(response: String): State = state {
 }
 
 
-
+/*
 fun gesture(code: String): State = state {
     onEntry {
         if((code == "[B@6996db8")){
@@ -191,5 +219,5 @@ fun parseResponse(response: String): State = state {
     }
     }
 
-}
+}  */
 
