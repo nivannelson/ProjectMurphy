@@ -162,16 +162,17 @@ val Robotarium: State = state(Parent) {
         furhat.listen()
     }
 
- /*   onResponse<PersonInCharge>(){
+   onResponse<ProjectNameIntent>(){
         var intent = ((it.intent).toString()).dropLast(2)
         println("intents triggered:"+intent)
-        var key = intent + " - ${it.intent.project}"
-        response = ReadFile().getResponse(key, "")
-
+        var key = it.intent.which.toString()
+       print("the key value ="+key)
+        //response = ReadFile().getResponse(key, "")
+       response=nlgdata[key]?.fulldesc.toString()  // to search in dictionary
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
         furhat.listen()
-    }*/
+    }
 
     onResponse<DontKnow> {
         var intent = ((it.intent).toString()).dropLast(2)

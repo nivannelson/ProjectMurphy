@@ -8,7 +8,7 @@ import furhatos.gestures.Gesture
 import furhatos.gestures.Gestures
 import java.io.File
 
-val serviceKey = "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"
+val serviceKey = "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"
 
 fun getNLGResponseFromGPT(input: String,histval: Int = 10): String {
 
