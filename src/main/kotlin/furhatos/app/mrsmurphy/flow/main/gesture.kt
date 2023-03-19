@@ -95,7 +95,8 @@ fun textgesture(code: String): State = state {
             ":wink:" -> {println("wink")
                 furhat.gesture(Gestures.Wink)}
 
-            else ->print("not in gesture list")
+            else ->{print("not in gesture list")
+                furhat.gesture(Gestures.Nod)}
         }
         print("gesture is called")
         terminate()
@@ -118,12 +119,14 @@ fun theparser(response: String): State = state {
         val splitResponse = response2.split("^")
         var numEmo = 0
         for (res in splitResponse) {
+            furhat.say(res)
             if(numEmo<emojis.size){
                 val code = emojis[numEmo]
                 println("code is :"+code)
                 call(textgesture(code))
                 numEmo++}
-            furhat.say(res)
+            else{
+            }
 
 
 

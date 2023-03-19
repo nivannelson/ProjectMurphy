@@ -13,7 +13,7 @@ val Init: State = state {
     }
     onEntry {
         /** start interaction */
-        dialogLogger.startSession()
+        dialogLogger.startSession(cloudToken = "5e64b713-486d-491d-8689-b2dbe49b8434")
         when {
             furhat.isVirtual() -> goto(Robotarium) // Convenient to bypass the need for user when running Virtual Furhat
             users.hasAny() -> {
