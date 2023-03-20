@@ -6,7 +6,7 @@ import com.theokanning.openai.completion.CompletionRequest
 import furhatos.flow.kotlin.*
 
 
-val serviceKey = "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"
+val serviceKey = "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"
 
 fun getNLGResponseFromGPT(input: String,histval: Int = 10): String {
 
@@ -55,17 +55,16 @@ fun getNLGResponseFromGPT(input: String,histval: Int = 10): String {
 
     try {
         val completion = service.createCompletion(completionRequest).choices.first().text
-
         response = completion.trim()
 
     } catch (e: Exception) {
         println("Problem with connection to OpenAI" + e.message)
-        response="Unfortunately im unable to connect to OpenAI services can you please repeat again"
+        response="Unfortunately I am unable to connect to OpenAI services. Can you please repeat the question again?"
         return response
     }
     //println(response)
-    println("-------------------------------------------------")
-    println(response)
+//    println("-------------------------------------------------")
+//    println(response)
     return response.drop(lengthofprompt)
 }
 

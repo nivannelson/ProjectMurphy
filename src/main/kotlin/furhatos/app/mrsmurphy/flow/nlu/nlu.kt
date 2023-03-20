@@ -29,7 +29,7 @@ class NationalRobotarium : Intent() {
             "What do you know about National robotarium",
             "What do you know about robotarium",
             "What is the National Robotarium",
-            "okay Murphy can you give me an explanation about this building"
+            "Can you give me an explanation about this building"
             )
     }
 }
@@ -44,7 +44,6 @@ class AboutMurphy : Intent() {
             "Whats your purpose",
             "talk about you",
             "Explain yourself"
-
         )
     }
 }
@@ -57,8 +56,7 @@ class Absolutely: Intent() {
             "i am interested",
             "tell me facts",
             "nice I want to know it",
-            " yeah sure ask away"
-
+            "Yeah sure ask away"
         )
     }
 }
@@ -78,7 +76,6 @@ class Researches : Intent() {
             "What are the researches going on the robotarium",
             "Major researches in the National Robotarium",
             "What is the primary focus of research at the National Robotarium"
-
         )
     }
 }
@@ -90,10 +87,9 @@ class WhatsNew : Intent() {
             "could you tell me about the latest news from the National robotarium",
             "any recent news",
             "any recent update about robotarium",
-            "any interesting updates about the robortarium",
+            "any interesting updates about the robotarium",
             "any recent updates about this building",
             "whats latest updates in here"
-
         )
     }
 }
@@ -106,7 +102,7 @@ class HeathCare : Intent() {
             "could you tell me about the healthcare research",
             "could you tell me about the healthcare research",
             "Researches in healthcare",
-                    "can you tell me about the researches in medical field"
+            "can you tell me about the researches in medical field"
             )
     }
 }
@@ -154,11 +150,33 @@ class ConversationalAgents : Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
             "Conversational Agents",
-            "Whats happening in the Conversational Agents project",
-            "Whats happening in the Conversational Agents research",
+            "What is happening in the Conversational Agents project",
+            "What is happening in the Conversational Agents research",
             "could you tell me about the Conversational Agents research",
             "could you tell me about the Conversational Agents research",
             "Researches in Conversational Agents"
+        )
+    }
+}
+
+class UpcomingEvent : Intent() {
+    override fun getExamples(lang: Language): List<String> {
+        return listOf(
+            "Upcoming events",
+            "Future events",
+            "What are the upcoming events",
+            "What are the future events",
+            "Can you tell me about the upcoming events",
+            "What's happening around here in the coming weeks?",
+            "Are there any interesting events coming up soon?",
+            "What events are on the calendar for the next few weeks?",
+            "Is there anything special happening in the near future?",
+            "Can you tell me about any upcoming events or activities?",
+            "What's on the schedule for the next couple of weeks?",
+            "Are there any upcoming events that I should be aware of?",
+            "Can you give me some information about events that are planned for the future?",
+            "What events do you have planned in the upcoming weeks?",
+            "Is there anything exciting happening soon that I don't want to miss?"
         )
     }
 }
