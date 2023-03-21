@@ -11,9 +11,6 @@ import java.time.LocalTime
 
 
 var firstEntry = true
-
-
-
 val Robotarium: State = state(Parent) {
     var response=""
     onEntry {
@@ -33,17 +30,22 @@ val Robotarium: State = state(Parent) {
             furhat.say("Welcome to the National Robotarium!")
             call(whatCanIDo(true))
             firstEntry = false
+            furhat.say("Is there something specific you would like to know more about the place?")
             furhat.listen()
         }
         else {
             call(whatCanIDo(false))
+            random(
+                { furhat.say("Are you interested in any particular aspect of our facility or would you like a general overview of what we offer?") },
+                { furhat.say("Can you tell me what specifically brought you here so that I can direct you to the information you need?") }
+            )
             furhat.listen()
         }
     }
     onReentry {
         call(whatCanIDo(false))
+        furhat.say("Is there anything else you would like to know more about?")
         furhat.listen()
-
     }
 
     onResponse<NationalRobotarium> {
@@ -141,7 +143,6 @@ val Robotarium: State = state(Parent) {
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
         furhat.listen()
-
     }
     onResponse<Cafe> {
         var intent = ((it.intent).toString()).dropLast(2)
@@ -149,7 +150,6 @@ val Robotarium: State = state(Parent) {
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
         furhat.listen()
-
     }
     onResponse<Toilet> {
         var intent = ((it.intent).toString()).dropLast(2)
@@ -161,26 +161,23 @@ val Robotarium: State = state(Parent) {
     }
     onResponse<playgame> {
         UtilsLib.randomNoRepeat(
-            { furhat.say("Can i ask?") },
-            { furhat.say("i will ask now is that ok?") },
-            { furhat.say("ok, can i ask now") } )
+            { furhat.say("May I offer you some trivia about the building that you may find intriguing?") },
+            { furhat.say("Are you interested in any particular information regarding the building that I can share with you?") },
+            { furhat.say("Would you like to learn an interesting fact about the building?") } )
         call(AskQuestion())
-
     }
-    onResponse<Appretiate> {
+    onResponse<Appreciate> {
         var intent = ((it.intent).toString()).dropLast(2)
         response=" aww thank you make murphy appreciate the user back maybe even greet the user based on the user's response"
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
         furhat.listen()
-
     }
     onResponse<MyName> {
         var intent = ((it.intent).toString()).dropLast(2)
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
         furhat.listen()
-
     }
     onResponse<Wifi> {
 //        var intent = ((it.intent).toString()).dropLast(2)
@@ -196,7 +193,7 @@ val Robotarium: State = state(Parent) {
         response= "Visitor wants to leave the conversation. Thank the visitor for talking to Murphy"
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
-        furhat.listen()
+        //furhat.listen()
 
     }
     onResponse<Alright> {
@@ -218,40 +215,6 @@ val Robotarium: State = state(Parent) {
                 call(AskQuestion())},
             {},{},{},{},{},{},{},{}
         )
-
         furhat.listen(10000)
     }
-
 }
-
-//fun newfunction(response: String) : State = state(Parent){
-//    onEntry {
-//        var replygpt= getNLGResponseFromGPT((response))
-//        call(theparser(replygpt))
-//        furhat.listen() }
-//    onResponse {
-//        var intent = ((it.intent).toString()).dropLast(2)
-//        var replygpt= getNLGResponseFromGPT((response))
-//        call(theparser(replygpt))
-//        furhat.listen()
-//
-//    }
-//    onNoResponse {
-//        furhat.listen(5000)
-//        UtilsLib.randomNoRepeat(
-//            {furhat.say("if your interested can i ask you a trivia question?")
-//            furhat.listen(3000)
-//            onResponse<Yes> { call(AskQuestion()) }
-//            onResponse {}
-//            onNoResponse {}
-//            },
-//            {furhat.say("are you interest in knowing some facts about this building")
-//            furhat.listen(3000)
-//            onResponse<Yes> { call(AskQuestion()) }
-//            onResponse {}
-//            onNoResponse {}},
-//            {},{},{},{},{},{}
-//            )
-//        furhat.listen(500)
-//    }
-//}

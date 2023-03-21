@@ -67,7 +67,6 @@ fun textgesture(code: String): State = state {
                 furhat.gesture(Gestures.BigSmile)}
             ":smiley:" -> {println("Smile")
                 furhat.gesture(Gestures.BigSmile)}
-
             ":thoughtful:" -> {println("thoughtful")
                 furhat.gesture(Gestures.Thoughtful)}
             ":thumbs_up:"-> {println("thumbs_up")
@@ -76,10 +75,8 @@ fun textgesture(code: String): State = state {
                 furhat.gesture(Gestures.Shake)}
             ":thinking_face:"-> {println("thinking_face")
                 furhat.gesture(Gestures.Thoughtful)}
-
             ":wink:" -> {println("wink")
                 furhat.gesture(Gestures.Wink)}
-
             else ->{print("not in gesture list")
                 furhat.gesture(Gestures.Nod)}
         }
@@ -103,13 +100,13 @@ fun theparser(response: String): State = state {
         val splitResponse = response2.split("^")
         var numEmo = 0
         for (res in splitResponse) {
-            furhat.say(res)
+            if (res.isNotEmpty()) {
+                furhat.say(res)
+            }
             if(numEmo<emojis.size){
                 val code = emojis[numEmo]
-//                println("code is :"+code)
                 call(textgesture(code))
-                numEmo++}
-            else{
+                numEmo++
             }
         }
         terminate()

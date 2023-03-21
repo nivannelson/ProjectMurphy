@@ -278,9 +278,9 @@ class playgame : Intent(){
     override fun getExamples(lang: Language): List<String> {
         return listOf("can we play a game","I am bored","Do you have any games","can we play something i dont have anything to do","play a game maybe","can you ask me some questions","can you give another question","can you ask another question","question please","ask another question","another question","quest")}}
 
-class Appretiate : Intent(){
+class Appreciate : Intent(){
     override fun getExamples(lang: Language): List<String> {
-        return listOf("Appretiate","Cheers mate","Wow that is interesting","Wow thats really good Murphy","thats a fun fact","cool","that was awesome","interesting","i love you","love","lovely","amazing")}}
+        return listOf("Appreciate","Cheers mate","Wow that is interesting","Wow that's really good Murphy","that's a fun fact","cool","that was awesome","interesting","i love you","love","lovely","amazing")}}
 
 class MyName : Intent(){
     override fun getExamples(lang: Language): List<String> {

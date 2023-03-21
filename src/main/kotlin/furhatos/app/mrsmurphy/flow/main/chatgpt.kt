@@ -6,7 +6,7 @@ import com.theokanning.openai.completion.CompletionRequest
 import furhatos.flow.kotlin.*
 
 
-val serviceKey = "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"
+val serviceKey = ""
 
 fun getNLGResponseFromGPT(input: String,histval: Int = 10): String {
 
@@ -34,7 +34,7 @@ fun getNLGResponseFromGPT(input: String,histval: Int = 10): String {
     conversationInput+=history
     conversationInput+="\n Murphy should now produce a casual and engaging response with appropriate gestures of format \":gesture:\". The gestures can be added to appropriate places between or in the end. Response should be no longer than 3 sentences and murphy is not required to greet Visitor. Also if the question is asked out of the context, Murphy should ask the user to confirm the visitor's question which is most related to the information given above in an informal way with gestures. Do not attempt to fabricate or hallucinate any answers. Murphy: ?"
     var response = ""
-    val lengthofprompt=conversationInput.length
+    val lengthofprompt = conversationInput.length
     // Read more about these settings: https://beta.openai.com/docs/introduction
     var temperature = 0.7 // Higher values means the model will take more risks. Try 0.9 for more creative applications, and 0 (argmax sampling) for ones with a well-defined answer.
     var maxTokens =  100// Length of output generated. 1 token is on average ~4 characters or 0.75 words for English text
@@ -59,7 +59,7 @@ fun getNLGResponseFromGPT(input: String,histval: Int = 10): String {
 
     } catch (e: Exception) {
         println("Problem with connection to OpenAI" + e.message)
-        response="Unfortunately I am unable to connect to OpenAI services. Can you please repeat the question again?"
+        response="Unfortunately I am unable to connect to OpenAI services. :sad: Can you please repeat the question again?"
         return response
     }
     //println(response)

@@ -14,7 +14,7 @@ val questionsEnglish = mutableListOf(
     Question("How many universities are involved in the partnership that created the National Robotarium?",
         "Heriot-Watt University and the University of Edinburgh",
         answer = listOf("2", "two"),
-        alternatives = listOf(listOf("1", "one"), listOf("2", "two"))),
+        alternatives = listOf(listOf("1", "one"), listOf("3", "three"))),
     Question("How much funding did National Robotarium received from the UK government?",
         "The project was awarded 21 million pounds in funding from the UK government’s Industrial Strategy Challenge Fund with an additional £1.4 million from the Scottish Funding Council. ",
         answer = listOf("21 million pounds", "21 million"),
