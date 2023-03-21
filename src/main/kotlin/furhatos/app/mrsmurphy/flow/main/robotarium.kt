@@ -119,6 +119,14 @@ val Robotarium: State = state(Parent) {
         furhat.listen()
     }
 
+    onResponse<UpcomingEvent> {
+        var intent = ((it.intent).toString()).dropLast(2)
+        response=nlgdata[intent]?.fulldesc.toString()
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
+    }
+
    onResponse<ProjectNameIntent> {
         var intent = ((it.intent).toString()).dropLast(2)
         var key = it.intent.which.toString()
