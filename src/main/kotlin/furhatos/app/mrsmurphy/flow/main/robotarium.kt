@@ -1,27 +1,23 @@
 package furhatos.app.mrsmurphy.flow.main
 
-import ReadFile
 import furhat.libraries.standard.UtilsLib
 import furhatos.app.mrsmurphy.flow.Parent
 import furhatos.app.mrsmurphy.flow.nlu.*
 import furhatos.app.mrsmurphy.flow.trivia.AskQuestion
 import furhatos.flow.kotlin.*
-import furhatos.gestures.Gestures
 import furhatos.nlu.common.DontKnow
-import furhatos.nlu.common.No
-import furhatos.nlu.common.Yes
 import theparser
+import java.time.LocalDateTime
 import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 
 var firstEntry = true
-
-
-
 val Robotarium: State = state(Parent) {
     var response=""
     onEntry {
         if(firstEntry){
+            furhat.ledStrip.solid(java.awt.Color(127,0,0))
             UtilsLib.randomNoRepeat(
                 { furhat.say("Hi") },
                 { furhat.say("hello") },
@@ -34,278 +30,250 @@ val Robotarium: State = state(Parent) {
                     }
                     furhat.say(greeting)
                 })
-            var intent = "aboutmurphy"
-            //response = ReadFile().getResponse(intent, "")
-            response=nlgdata[intent]?.fulldesc.toString()
-            UtilsLib.randomNoRepeat(
-            { furhat.say("Welcome to the National Robotarium!") },
-            { furhat.say("") },
-            { furhat.say("") },
-            { furhat.say("") },
-            { furhat.say("") }
-        )
+            furhat.say("Welcome to the National Robotarium!")
+            call(whatCanIDo(true))
             firstEntry = false
-        call(whatCanIDo(true))
-        furhat.listen()}
-        var intent = "aboutmurphy"
-        //response = ReadFile().getResponse(intent, "")
-        response=nlgdata[intent]?.fulldesc.toString()
+            furhat.say("Is there something specific you would like to know more about the place?")
+            furhat.ledStrip.solid(java.awt.Color(0,127,0))
             furhat.listen()
         }
+        else {
+            furhat.ledStrip.solid(java.awt.Color(127,0,0))
+            call(whatCanIDo(false))
+            random(
+                { furhat.say("Are you interested in any particular aspect of our facility or would you like a general overview of what we offer?") },
+                { furhat.say("Can you tell me what specifically brought you here so that I can direct you to the information you need?") }
+            )
+            furhat.ledStrip.solid(java.awt.Color(0,127,0))
+            furhat.listen()
+        }
+    }
     onReentry {
-        var intent = "aboutmurphy"
-        //response = ReadFile().getResponse(intent, "")
-        response= nlgdata[intent]?.fulldesc.toString()
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         call(whatCanIDo(false))
+        furhat.say("Is there anything else you would like to know more about?")
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
-
     }
 
     onResponse<NationalRobotarium> {
-
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
-        println("intents triggered:"+intent)
-        //response = ReadFile().getResponse(intent, "")
         response=nlgdata[intent]?.fulldesc.toString()
-        //goto(newfunction(response))
-
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
     }
 
-    onResponse<AboutMurphy>(){
+    onResponse<AboutMurphy> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
-        println("intents triggered:"+intent)
-        //response = ReadFile().getResponse(intent, "")
         response=nlgdata[intent]?.fulldesc.toString()
-
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
     }
 
-    onResponse<Researches>(){
+    onResponse<Researches> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
-        println("intents triggered:"+intent)
-        //response = ReadFile().getResponse(intent, "")
         response=nlgdata[intent]?.fulldesc.toString()
-
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
     }
 
-    onResponse<WhatsNew>(){
+    onResponse<WhatsNew> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
-        println("intents triggered:"+intent)
-        //response = ReadFile().getResponse(intent, "")
-        response=nlgdata[intent]?.fulldesc.toString()
-
+        var keyIntent = keypairs[intent]?.split(",")?.random()
+        response=nlgdata[keyIntent]?.fulldesc.toString()
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
     }
 
-    onResponse<HeathCare>(){
+    onResponse<HeathCare> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
-        println("intents triggered:"+intent)
-        //response = ReadFile().getResponse(intent, "")
         response=nlgdata[intent]?.fulldesc.toString()
-
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
     }
 
-    onResponse<Manufacturing>(){
+    onResponse<Manufacturing> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
-        println("intents triggered:"+intent)
-        //response = ReadFile().getResponse(intent, "")
         response=nlgdata[intent]?.fulldesc.toString()
-
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
     }
 
-    onResponse<Offshore>(){
+    onResponse<Offshore> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
-        println("intents triggered:"+intent)
-        //response = ReadFile().getResponse(intent, "")
         response=nlgdata[intent]?.fulldesc.toString()
-
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
     }
 
-    onResponse<Agriculture>(){
+    onResponse<Agriculture> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
-        println("intents triggered:"+intent)
-        //response = ReadFile().getResponse(intent, "")
         response=nlgdata[intent]?.fulldesc.toString()
-
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
     }
 
-    onResponse<ConversationalAgents>(){
+    onResponse<ConversationalAgents> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
-        println("intents triggered:"+intent)
-        //response = ReadFile().getResponse(intent, "")
         response=nlgdata[intent]?.fulldesc.toString()
-
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
     }
 
-   onResponse<ProjectNameIntent>(){
+    onResponse<UpcomingEvent> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
-        println("intents triggered:"+intent)
+        response=nlgdata[intent]?.fulldesc.toString()
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
+        furhat.listen()
+    }
+
+   onResponse<ProjectNameIntent> {
+       furhat.ledStrip.solid(java.awt.Color(127,0,0))
+        var intent = ((it.intent).toString()).dropLast(2)
         var key = it.intent.which.toString()
-       print("the key value ="+key)
-        //response = ReadFile().getResponse(key, "")
-       response=nlgdata[key]?.fulldesc.toString()  // to search in dictionary
+        response=nlgdata[key]?.fulldesc.toString()  // to search in dictionary
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
+       furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
     }
 
     onResponse<DontKnow> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
-        println("intents triggered:"+intent)
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
-
     }
     onResponse<Cafe> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
-        println("intents triggered:"+intent)
-        response=" there is no cafe inside robotarium -(if on further ask) presence of coffe machine in the building - cafe in the unversity like elements,piece "
+        response=" there is no cafe inside robotarium -(if on further ask) presence of coffee machine in the building - cafe in the university like elements,piece "
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
-
     }
     onResponse<Toilet> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
         response=" there is toilets inside robotarium -(if on further ask) just take the left "
-        println("intents triggered:"+intent)
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
 
     }
     onResponse<playgame> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         UtilsLib.randomNoRepeat(
-            { furhat.say("Can i ask?") },
-            { furhat.say("i will ask now is that ok?") },
-            { furhat.say("ok, can i ask now") } )
+            { furhat.say("May I offer you some trivia about the building that you may find intriguing?") },
+            { furhat.say("Are you interested in any particular information regarding the building that I can share with you?") },
+            { furhat.say("Would you like to learn an interesting fact about the building?") } )
         call(AskQuestion())
-
     }
-    onResponse<Appretiate> {
+    onResponse<Appreciate> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
-        response=" aww thankyou make murphy apretiate the user back maybe even greet the user "
-        println("intents triggered:"+intent)
+        response=" aww thank you make murphy appreciate the user back maybe even greet the user based on the user's response"
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
-
     }
     onResponse<MyName> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
-        println("intents triggered:"+intent)
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
-
+    }
+    onResponse<DateTime> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+        val current = LocalDateTime.now().format(formatter)
+        val day = LocalDateTime.now().dayOfWeek
+        response = "Today date and time is $current. The format is yyyy-MM-dd HH:mm, where yyyy is the year, MM is the month, dd is the day, HH is the time in hours, mm is the time in minutes. The name of the day is $day"
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
+        furhat.listen()
     }
     onResponse<Wifi> {
-        var intent = ((it.intent).toString()).dropLast(2)
-        response=""
-        println("intents triggered:"+intent)
-        var replygpt= getNLGResponseFromGPT((response))
-        call(theparser(replygpt))
+//        var intent = ((it.intent).toString()).dropLast(2)
+//        response=""
+//        var replygpt= getNLGResponseFromGPT((response))
+//        call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
+        furhat.say("Sure, the WIFI available inside National Robotarium is powered by eduroam. To connect to our WIFI, you will need to use your eduroam login credentials.")
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
-
     }
     onResponse<GoodBye> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
-        response= "user wants to go away do "
-        println("intents triggered:"+intent)
+        response= "Visitor wants to leave the conversation. Thank the visitor for talking to Murphy"
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
-        furhat.listen()
+        //furhat.listen()
 
     }
     onResponse<Alright> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
-        println("intents triggered:"+intent)
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
     }
-
     onResponse {
-
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
-        println("intents triggered:"+intent)
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
-
     }
     onNoResponse {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
         UtilsLib.randomNoRepeat(
-            {furhat.say("if your interested can i ask you a trivia question?")
-                call(AskQuestion())
-            },
-            {furhat.say("are you interest in knowing some facts about this building")
+            {furhat.say("Would you like to learn some interesting facts about the National Robotarium through a quiz?")
                 call(AskQuestion())},
-            {},{},{},{},{},{}
+            {},{},{},{},{},{},{},{}
         )
-
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen(10000)
     }
-
-}
-
-fun newfunction(response: String) : State = state(Parent){
-    onEntry {
-        var replygpt= getNLGResponseFromGPT((response))
-        call(theparser(replygpt))
-        furhat.listen() }
-    onResponse {
-        var intent = ((it.intent).toString()).dropLast(2)
-        println("intents triggered:"+intent)
-        var replygpt= getNLGResponseFromGPT((response))
-        call(theparser(replygpt))
-        furhat.listen()
-
-    }
-    onNoResponse {
-        furhat.listen(5000)
-        UtilsLib.randomNoRepeat(
-            {furhat.say("if your interested can i ask you a trivia question?")
-            furhat.listen(3000)
-            onResponse<Yes> { call(AskQuestion()) }
-            onResponse {}
-            onNoResponse {}
-            },
-            {furhat.say("are you interest in knowing some facts about this building")
-            furhat.listen(3000)
-            onResponse<Yes> { call(AskQuestion()) }
-            onResponse {}
-            onNoResponse {}},
-            {},{},{},{},{},{}
-            )
-
-        furhat.listen(500)
-    }
-
 }

@@ -9,62 +9,49 @@ fun textgesture(code: String): State = state {
         when (code) {
             ":angry:" -> {println("angry")
                 furhat.gesture(Gestures.ExpressSad)}
-
             ":broken_heart:" -> {println("broken_heart")
                 furhat.gesture(Gestures.ExpressSad)}
-
+            ":sad:" -> {println("sad")
+                furhat.gesture(Gestures.ExpressSad)}
             ":confused:" -> {println("confused")
                 furhat.gesture(Gestures.Thoughtful)}
             ":cry:" -> {println("cry")
                 furhat.gesture(Gestures.ExpressSad)}
-
             ":disappointed:" -> {println("disappointed")
                 furhat.gesture(Gestures.ExpressSad)}
-
             ":expressionless:" -> {println("expressionless")
                 furhat.gesture(Gestures.Smile)}
-
             ":fearful:" -> {println("fearful")
                 furhat.gesture(Gestures.ExpressFear)}
             ":flushed:" -> {println("flushed")
                 furhat.gesture(Gestures.BrowRaise)
                 furhat.gesture(Gestures.Surprise)}
-
             ":heart_eyes:" -> {println("heart_eyes")
                 furhat.gesture(Gestures.BigSmile)}
             ":heart:" -> {println("heart")
                 furhat.gesture(Gestures.BigSmile)}
-
             ":innocent:" -> {println("innocent")
                 furhat.gesture(Gestures.BigSmile)}
-
             ":joy:" -> {println("joy")
                 furhat.gesture(Gestures.BigSmile)}
-
             ":kissing_heart:" -> {println("kissing_heart")
                 furhat.gesture(Gestures.BigSmile)}
-
             ":laughing:" -> {println("laughing")
                 furhat.gesture(Gestures.BigSmile)}
-
             ":no_mouth:" -> {println("no_mouth")
                 furhat.gesture(Gestures.Smile)}
             ":nerd_face:" -> {println("nerd_face")
                 furhat.gesture(Gestures.Smile)}
-
             ":ok_woman:" -> {println("ok_woman")
                 furhat.gesture(Gestures.Nod)}
             ":open_mouth:" -> {println("open_mouth")
                 furhat.gesture(Gestures.Oh)}
-
             ":persevere:" -> {println("persevere")
                 furhat.gesture(Gestures.ExpressSad)}
-
             ":robot:" -> {println("robot")
                 furhat.gesture(Gestures.Smile)}
             ":robot_head:" -> {println("robot_head")
                 furhat.gesture(Gestures.Smile)}
-
             ":stuck_out_tongue:" -> {println("stuck_out_tongue")
                 furhat.gesture(Gestures.Smile)}
             ":sunglasses:" -> {println("sunglasses")
@@ -82,7 +69,6 @@ fun textgesture(code: String): State = state {
                 furhat.gesture(Gestures.BigSmile)}
             ":smiley:" -> {println("Smile")
                 furhat.gesture(Gestures.BigSmile)}
-
             ":thoughtful:" -> {println("thoughtful")
                 furhat.gesture(Gestures.Thoughtful)}
             ":thumbs_up:"-> {println("thumbs_up")
@@ -91,23 +77,20 @@ fun textgesture(code: String): State = state {
                 furhat.gesture(Gestures.Shake)}
             ":thinking_face:"-> {println("thinking_face")
                 furhat.gesture(Gestures.Thoughtful)}
-
             ":wink:" -> {println("wink")
                 furhat.gesture(Gestures.Wink)}
-
             else ->{print("not in gesture list")
                 furhat.gesture(Gestures.Nod)}
         }
         print("gesture is called")
         terminate()
     }
-
 }
 
 
 fun theparser(response: String): State = state {
     onEntry {
-        println("inupe value to the funtion:"+response)
+//        println("inupe value to the funtion:"+response)
         val remov = Regex("Murphy:|Gesture:")
         val regex = Regex(":\\w+:")
         val response=  response.replace(remov, "   ^")
@@ -115,28 +98,22 @@ fun theparser(response: String): State = state {
         val response2=  response.replace(regex, "   ^")
 
 
-        println("the 2 respont ="+response2)
+//        println("the 2 respont ="+response2)
         val splitResponse = response2.split("^")
         var numEmo = 0
         for (res in splitResponse) {
-            furhat.say(res)
+            if (res.isNotEmpty()) {
+                furhat.say(res)
+            }
             if(numEmo<emojis.size){
                 val code = emojis[numEmo]
-                println("code is :"+code)
                 call(textgesture(code))
-                numEmo++}
-            else{
+                numEmo++
             }
-
-
-
         }
         terminate()
     }
-
 }
-
-
 /*
 fun gesture(code: String): State = state {
     onEntry {
