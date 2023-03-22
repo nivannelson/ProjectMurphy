@@ -11,6 +11,8 @@ fun textgesture(code: String): State = state {
                 furhat.gesture(Gestures.ExpressSad)}
             ":broken_heart:" -> {println("broken_heart")
                 furhat.gesture(Gestures.ExpressSad)}
+            ":sad:" -> {println("sad")
+                furhat.gesture(Gestures.ExpressSad)}
             ":confused:" -> {println("confused")
                 furhat.gesture(Gestures.Thoughtful)}
             ":cry:" -> {println("cry")

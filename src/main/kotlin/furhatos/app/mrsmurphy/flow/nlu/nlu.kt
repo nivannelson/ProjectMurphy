@@ -6,6 +6,7 @@ import furhatos.nlu.EnumItem
 import furhatos.nlu.Intent
 import furhatos.nlu.WildcardEntity
 import furhatos.nlu.common.Number
+import furhatos.nlu.common.Time
 import furhatos.nlu.wikidata.City
 import furhatos.util.Language
 
@@ -291,6 +292,14 @@ class MyName : Intent(){
 class Alright : Intent(){
     override fun getExamples(lang: Language): List<String> {
         return listOf("alright","Fine","ok","good","fine","its ok","no worries","no issues","cheers")}}
+
+class DateTime : Intent() {
+    override fun getExamples(lang: Language): List<String> {
+        return listOf(
+            "What day is today?",
+            "Tell me the date today")
+    }
+}
 
 class GoodBye : Intent(){
     override fun getExamples(lang: Language): List<String> {

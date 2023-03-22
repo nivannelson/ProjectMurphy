@@ -7,7 +7,9 @@ import furhatos.app.mrsmurphy.flow.trivia.AskQuestion
 import furhatos.flow.kotlin.*
 import furhatos.nlu.common.DontKnow
 import theparser
+import java.time.LocalDateTime
 import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 
 var firstEntry = true
@@ -213,6 +215,17 @@ val Robotarium: State = state(Parent) {
     onResponse<MyName> {
         furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
+        furhat.listen()
+    }
+    onResponse<DateTime> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+        val current = LocalDateTime.now().format(formatter)
+        val day = LocalDateTime.now().dayOfWeek
+        response = "Today date and time is $current. The format is yyyy-MM-dd HH:mm, where yyyy is the year, MM is the month, dd is the day, HH is the time in hours, mm is the time in minutes. The name of the day is $day"
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
         furhat.ledStrip.solid(java.awt.Color(0,127,0))
