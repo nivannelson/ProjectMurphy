@@ -7,6 +7,7 @@ import furhatos.flow.kotlin.state
 
 val Idle: State = state {
     onEntry {
+        furhat.ledStrip.solid(java.awt.Color(0,0,127))
         furhat.attendNobody()
     }
 

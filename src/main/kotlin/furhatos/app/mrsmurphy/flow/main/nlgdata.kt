@@ -12,8 +12,11 @@ val keypairs = mapOf(
 
 val nlgdata = mapOf(
     "AboutMurphy" to DescMake(
-        "... i am murphy and i have been invented to keep you engaged on and about national robotarium. i have quite good knowledge about this building... its projects and research. you can also ask me about the companies and their important point of contact. you can include topics related to robotics which pretty much falls within myself but with the help of my friend chat GPT.national robotarium a state-of-the-art research facility - edinburgh - Heriot-watt campus - found in 28 september 2022 - collaborated with university of edinburgh - majorly concentrates on robotics and ai related projects and researches  researchers from the national robotarium... a world-leading centre for robotics and artificial intelligence who are working with businesses to develop valuable solutions to industry challenges.there are lots of research here which are - industry expertise - healthcare - manufacturing - offshore - agriculture - human robot interaction - conversation agents",
+        "If the Visitor asks, she can give information about the building, what all research and labs are in the building, or even general knowledge about robotics, artificial intelligence",
         ""),
+    "WhereamI" to DescMake(
+        " in National Robotarium on Heriot watt campus -Edinburgh - (only if Visitor ask)  inaugurated on september 2022 - (only if Visitor ask) collaborated with university of edinburgh -(only if Visitor ask) majorly concentrates on robotics and ai related projects and researches",
+        "none1"),
     "NationalRobotarium" to DescMake(
         "rich history - national robotarium a state-of-the-art research facility - Edinburgh - Heriot-Watt campus - inaugrated on september 2022 - collaborated with university of edinburgh - majorly concentrates on robotics and ai related projects and researches",
         "none1"),
@@ -53,9 +56,85 @@ val nlgdata = mapOf(
         "A team of student researchers from the National Robotarium have reached the next round of the Amazon Alexa Prize SimBot Challenge, a global AI competition that tasks university teams with developing a bot that can best respond to people’s commands and demands. Team EMMA (Embodied MultiModal Agent), led by PhD students Amit, Hementhage, Malvina, and Georgios, successfully completed the Public Benchmark Challenge in April. The challenge involved talking a robot model through a series of household tasks using predefined dialogue datasets – created and provided by Amazon – to assess its ability to follow instructions, learn, and predict changes in its 3D virtual environment. Team EMMA, the only non-US team to be shortlisted for the competition, placed sixth on the leader board, allowing them to continue into the ‘live interactions’ development phase, beginning in July 2022. During this phase, the teams will compete to develop a bot that best responds to real Alexa customers who will rate, review and feedback in real-time. The outcome of the development phase will be revealed during the finals, scheduled for early 2023. Professor Verena Rieser, Professor of Conversational AI at the National Robotarium, and team advisor said: 'The Alexa Prize SimBot Challenge is focused on helping advance the next generation of virtual assistants that will assist humans in completing real-world tasks.'The technology and research being developed by the teams involved is really exciting as it could ultimately mean that robots are able to help and support people in their homes and other real-life environments.",
         ""
     ),
-    "none1" to DescMake(
-        "none1",
+    "Helen Hastie" to DescMake(
+        "Professor Helen Hastie is leading the UKRI TAS Node in Trust which aims to establish a research center for designing trustworthy autonomous systems that are widely accepted and used in various applications. She is the Director Centre for Doctoral Training in Robotics and Autonomous Systems (CDT-RAS) and Academic Co-Lead for the National Robotarium",
         "none1"),
-    "none2" to DescMake(
+    "Yvan Petillot" to DescMake(
+        "Prof. Yvan Petillot is a distinguished academic at Heriot-Watt University, with expertise in Robotics and Computer Vision. He holds multiple leadership roles, including deputy director of the Institute for Sensor Signals and Systems and the joint research institute in Signal and Image Processing with Edinburgh University.",
+        "none2"),
+    "Oliver Lemon" to DescMake(
         "",
-        "none2"))
+        "none2"),
+    "Lynne Baillie" to DescMake(
+        "She is the head of Human-Robot Interaction at the National Robotarium and she leads on research into assistive living technologies",
+        "none2"),
+    "Duncan Hand" to DescMake(
+        "Duncan Hand is Professor of Applied Photonics...His current key focus is on manufacturing of medical devices, and he is Director of the Medical Device Manufacturing Centre and  Multi-modal Medical Device Manufacturing",
+        "none2"),
+    "Sethu Vijayakumar" to DescMake(
+        "",
+        "none2"),
+    "Nick Taylor" to DescMake(
+        "",
+        "none2"),
+    "Mauro Dragone" to DescMake(
+        "",
+        "none2"),
+    "Christian Dondrup" to DescMake(
+        "",
+        "none2"),
+    "Mustafa Suphi" to DescMake(
+        "",
+        "none2"),
+    "Patricia  A Vargas" to DescMake(
+        "",
+        "none2"),
+    "Wei Pang" to DescMake(
+        "",
+        "none2"),
+    "Carlos Mastalli" to DescMake(
+        "",
+        "none2"),
+    "Michael Lones" to DescMake(
+        "",
+        "none2"),
+    "Mustafa Suphi Erden" to DescMake(
+        "",
+        "none2"),
+    "Fernando Auat Cheein" to DescMake(
+        "",
+        "none2"),
+    "Alistair McConnell" to DescMake(
+        "",
+        "none2"),
+    "Nick Taylor" to DescMake(
+        "",
+        "none2"),
+    "Subramanian Ramamoorthy" to DescMake(
+        "",
+        "none2"),
+    "Stewart Miller" to DescMake(
+        " Stewart Miller is  the ceo  of national robotarium",
+        "none2"),
+    "Industry Partners" to DescMake(
+        "",
+        "none2"),
+    "EDF" to DescMake(
+        "",
+        "none2"),
+    "NHS Grampian" to DescMake(
+        "",
+        "none2"),
+    "Leuchie House Charity" to DescMake(
+        "",
+        "none2"),
+    "Fourier Intelligence" to DescMake(
+        "",
+        "none2"),
+    "Richard A Williams" to DescMake(
+        "",
+        "none2"),
+    "RobotsinRobotarium" to DescMake(
+        "Pepper,Nao, Ari, Spot,iCub, Cozmo, Tiago, MiRo...",
+        "none2")
+)

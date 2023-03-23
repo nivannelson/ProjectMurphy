@@ -5,6 +5,7 @@ import furhatos.app.mrsmurphy.flow.Parent
 import furhatos.app.mrsmurphy.flow.nlu.*
 import furhatos.app.mrsmurphy.flow.trivia.AskQuestion
 import furhatos.flow.kotlin.*
+import furhatos.nlu.EnumEntity
 import furhatos.nlu.common.DontKnow
 import theparser
 import java.time.LocalDateTime
@@ -56,6 +57,16 @@ val Robotarium: State = state(Parent) {
         furhat.listen()
     }
 
+
+    onResponse<WhereamI>{
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
+        var intent = ((it.intent).toString()).dropLast(2)
+        response=nlgdata[intent]?.fulldesc.toString()
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.ledStrip.solid(java.awt.Color(0,127,0))
+        furhat.listen()
+    }
     onResponse<NationalRobotarium> {
         furhat.ledStrip.solid(java.awt.Color(127,0,0))
         var intent = ((it.intent).toString()).dropLast(2)
@@ -158,15 +169,21 @@ val Robotarium: State = state(Parent) {
     }
 
    onResponse<ProjectNameIntent> {
+       var thename: EnumEntity? = it.intent.Pname
+       var key = ""
+       if (thename != null) {
+       if (thename.value != null) {key = thename.value.toString()}
+       else {key = thename.toText()}}
        furhat.ledStrip.solid(java.awt.Color(127,0,0))
-        var intent = ((it.intent).toString()).dropLast(2)
-        var key = it.intent.which.toString()
+
+
         response=nlgdata[key]?.fulldesc.toString()  // to search in dictionary
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
        furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen()
     }
+
 
     onResponse<DontKnow> {
         furhat.ledStrip.solid(java.awt.Color(127,0,0))
@@ -247,7 +264,16 @@ val Robotarium: State = state(Parent) {
         response= "Visitor wants to leave the conversation. Thank the visitor for talking to Murphy"
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
-        //furhat.listen()
+        goto(Idle)
+
+    }
+    onResponse<Weather> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
+        var intent = ((it.intent).toString()).dropLast(2)
+        response= "Visitor wants to know the weather at Currie, Edinbrugh,EH144AS use Edinbrugh weather forecast, website link : https://www.meteoblue.com/en/region/weather/radar/scotland_united-kingdom_2638360 to find the temperature and weather"
+        var replygpt= getNLGResponseFromGPT((response))
+        call(theparser(replygpt))
+        furhat.listen()
 
     }
     onResponse<Alright> {
@@ -260,7 +286,6 @@ val Robotarium: State = state(Parent) {
     }
     onResponse {
         furhat.ledStrip.solid(java.awt.Color(127,0,0))
-        var intent = ((it.intent).toString()).dropLast(2)
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
         furhat.ledStrip.solid(java.awt.Color(0,127,0))
@@ -269,9 +294,13 @@ val Robotarium: State = state(Parent) {
     onNoResponse {
         furhat.ledStrip.solid(java.awt.Color(127,0,0))
         UtilsLib.randomNoRepeat(
-            {furhat.say("Would you like to learn some interesting facts about the National Robotarium through a quiz?")
+            {furhat.say("Would you like to learn some interesting facts about robotics or National Robotarium?")
                 call(AskQuestion())},
-            {},{},{},{},{},{},{},{}
+            {furhat.say("Hey ... can i entertain you with some facts related to robotics")
+                call(AskQuestion())},
+            {furhat.say("Hey ... can i entertain you with some facts about to robotics")
+                call(AskQuestion())},
+            {},{},{},{},{},{},{},{},{},{}
         )
         furhat.ledStrip.solid(java.awt.Color(0,127,0))
         furhat.listen(10000)

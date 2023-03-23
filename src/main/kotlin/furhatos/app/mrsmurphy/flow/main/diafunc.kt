@@ -7,6 +7,7 @@ import furhatos.flow.kotlin.state
 fun whatCanIDo(firstTime: Boolean = false) : State = state {
     onEntry {
         if (firstTime) {
+            furhat.ledStrip.solid(java.awt.Color(127,0,0))
             random(
                 { furhat.say("My name is Murphy. I am a receptionist here at the National Robotarium.") },
                 { furhat.say("I'm Murphy, and I work as a receptionist here at the National Robotarium.") }
@@ -19,7 +20,9 @@ fun whatCanIDo(firstTime: Boolean = false) : State = state {
             )
         }
         else {
+            furhat.ledStrip.solid(java.awt.Color(127,0,0))
             random(
+                {},{},{},{},{},{},{},{},{},{},{},
                 {
                     furhat.say(
                         "I can tell you all about the building, " +

@@ -34,7 +34,6 @@ fun AskQuestion(): State = state(parent = Parent) {
             furhat.ask(QuestionSet.current.text + " " + QuestionSet.current.getOptionsString())
         }
     }
-
     // User is answering with any of the alternatives
     onResponse<AnswerOption> {
         val answer = it.intent
@@ -68,6 +67,12 @@ fun AskQuestion(): State = state(parent = Parent) {
 
         }
 
+    }
+        onResponse<NotInterested> {
+        furhat.ledStrip.solid(java.awt.Color(127,0,0))
+        var replygpt= getNLGResponseFromGPT(("Seems like Visitor is not interested in the facts/trivia"))
+        call(theparser(replygpt))
+        goto(Robotarium)
     }
         // The users answers that they don't know
         onResponse<DontKnow> {

@@ -18,7 +18,6 @@ class NationalRobotarium : Intent() {
             "Robotarium",
             "what is National robotarium",
             "what is this building",
-            "where am I",
             "can you talk about this building",
             "can you talk about this robotarium",
             "can you talk about this National robotarium",
@@ -34,6 +33,10 @@ class NationalRobotarium : Intent() {
             )
     }
 }
+
+class WhereamI : Intent(){
+    override fun getExamples(lang: Language): List<String> {
+        return listOf("Where am I","Can you tell me where am I","","","see you")}}
 
 class AboutMurphy : Intent() {
     override fun getExamples(lang: Language): List<String> {
@@ -53,7 +56,6 @@ class Absolutely: Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
             "Ask away",
-            "Sure why not",
             "i am interested",
             "tell me facts",
             "nice I want to know it",
@@ -182,23 +184,51 @@ class UpcomingEvent : Intent() {
     }
 }
 
-class WhichEntity: WildcardEntity("which", ProjectNameIntent())
-
-class ProjectNameIntent(): Intent() {
-
-    var which: WhichEntity? = null
-
-    override fun getExamples(lang: Language): List<String> {
+class Personname : EnumEntity(speechRecPhrases = true) {
+    override fun getEnum(lang: Language): List<String> {
         return listOf(
-            "Who is the in-charge of @which",
-            "Who is leading the @which",
-            "head of @which",
-            "Whom should I contact to get more info about @which",
-            "Whom should I contact to get more information about @which"
+            "Helen Hastie:helen hastie,professor helen hastie,hastie,halen,helen,miss helen,miss hastie,u k r i,ukri,t a s,trustworthy autonomous systems",
+            "Yvan Petillot:yvan petillot,proffesor yvan petillot,uvan petillot,proffessor petilot,director of the institute for sensor signals and systems,director of the institute for sensor signals,director of sensor signals",
+            "Oliver Lemon:oliver lemon,mister lemon,mister oliver",
+            "Lynne Baillie:human robot interaction,lynne baillie,miss lynne,miss lin,miss bailey",
+            "Duncan Hand:applied photonics,director of the medical device manufacturing centre,multi modal medical device manufacturing",
+            "Sethu Vijayakumar:vijayakumar,sethu vijayakumar,mister sethu",
+            "Nick Taylor:nick taylor,taylor,nick",
+            "Mauro Dragone:mauro dragone, mister dragone, proffesor dragone",
+            "Christian Dondrup:donrup,christian dondrup,professor christian dondrup",
+            "Mustafa Suphi:mustafa suphi",
+            "Patricia  A Vargas:patricia  a vargas, patricia",
+            "Wei Pang:wei pang,pang,professor wei pang",
+            "Carlos Mastalli:carlos mastalli",
+            "Michael Lones:michael lones",
+            "Mustafa Suphi Erden:mustafa suphi erden",
+            "Fernando Auat Cheein:fernando auat cheein,fernando auat,auat fernando",
+            "Alistair McConnell:alistair mc connel",
+            "Nick Taylor:nick taylor,nick",
+            "Subramanian Ramamoorthy:subramanian ramamoorthy",
+            "Stewart Miller:stewart miller,national robotarium,robotarium,national laboratory"
+
         )
     }
-
 }
+class ProjectNameIntent(val Pname: Personname? = null) : Intent() {
+    override fun getExamples(lang: Language): List<String> {
+        return listOf(
+            "Who is the in charge of @Pname",
+            "Who is @Pname",
+            "who is the @Pname",
+            "who is the director of @Pname",
+            "how to meet @Pname",
+            "Who is leading the @Pname",
+            "head of @Pname",
+            "who is the ceo of @Pname",
+            "Whom should I contact to get more info about @Pname",
+            "Whom should I contact to get more information about @Pname"
+        )
+    }
+}
+
+
 
 class AnswerOption : EnumEntity {
 
@@ -251,6 +281,18 @@ class DontKnow : Intent() {
     }
 }
 
+class NotInterested : Intent() {
+    override fun getExamples(lang: Language): List<String> {
+        return listOf(
+            "no i dont want",
+            "no im not",
+            "im not interested",
+            "maybe later",
+            "no I'm not interested"
+        )
+    }
+}
+
 class Wifi() : Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf("wifi", "internet", "I need to connect to the wifi", "Can I connect to the internet?" ,"I need internet connexion to check my emails?", "I don't have internet on my phone", "I need wifi to get the Q R code", "I need to connect to the wifi", "I need Wi-Fi to check my emails", "I need Wi-Fi to get the key")
@@ -277,7 +319,7 @@ class Toilet() : Intent() {
 
 class playgame : Intent(){
     override fun getExamples(lang: Language): List<String> {
-        return listOf("can we play a game","I am bored","Do you have any games","can we play something i dont have anything to do","play a game maybe","can you ask me some questions","can you give another question","can you ask another question","question please","ask another question","another question","quest")}}
+        return listOf("can we play a game","I am bored","Do you have any games","can we play something i dont have anything to do","play a game maybe","can you ask me some questions","can you give another question","can you ask another question","question please","ask another question","another question","quest","can you ask another fact")}}
 
 class Appreciate : Intent(){
     override fun getExamples(lang: Language): List<String> {
@@ -297,10 +339,37 @@ class DateTime : Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
             "What day is today?",
-            "Tell me the date today")
+            "Tell me the date today",
+            "date",
+            "time",
+            "what time",
+            "what date",
+            "what is the time now",
+            "whats is todays date")
     }
 }
+
+class Weather : Intent() {
+    override fun getExamples(lang: Language): List<String> {
+        return listOf(
+            "could you tell me what is today's temperature",
+            "What is todays weather",
+            "weather",
+            "can i know the weather",
+            "is it too rainy",
+            "raining outside",
+            "forecast",
+            "isnt it too cold aint it",
+            "drizzly",
+            "is it sunny",
+            "windy",
+            "foggy",
+            "can you tell me what is the temperature here"
+
+        )
+}}
 
 class GoodBye : Intent(){
     override fun getExamples(lang: Language): List<String> {
         return listOf("Thank you for your time","Goodbye","bye","cya","see you")}}
+
