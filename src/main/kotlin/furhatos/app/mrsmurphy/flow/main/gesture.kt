@@ -213,116 +213,29 @@ fun textgesture(code: String): State = state {
 
 fun theparser(response: String): State = state {
     onEntry {
-        println("inupe value to the funtion:"+response)
-        val remov = Regex("Murphy:|Gesture:")
+        // println("inupe value to the funtion:"+response)
+        val rmv = Regex("Murphy:|Gesture:")
         val regex = Regex(":\\w+:")
-        val response=  response.replace(remov, "   ^")
+        val response=  response.replace(rmv, "   ^")
         val emojis = regex.findAll(response).map { it.value }.toList()
-        println("full list of emojis found"+emojis)
+        // println("full list of emojis found"+emojis)
         val response2=  response.replace(regex, "   ^")
 
-
-//        println("the 2 respont ="+response2)
         val splitResponse = response2.split("^")
         var res = 0
-        furhat.say(splitResponse[res])
+        if (splitResponse[res].trim().isNotEmpty()) {
+            furhat.say(splitResponse[res].trim())
+        }
         for (emo in emojis) {
             if(emo.isNotEmpty()){
                 val code = emo
                 call(textgesture(code))
             }
             res+=1
-            if (splitResponse[res].isNotEmpty()) {
-                furhat.say(splitResponse[res])
+            if (splitResponse[res].trim().isNotEmpty()) {
+                furhat.say(splitResponse[res].trim())
             }
         }
         terminate()
     }
 }
-/*
-fun gesture(code: String): State = state {
-    onEntry {
-        if((code == "[B@6996db8")){
-                println("Smile")
-                furhat.gesture(Gestures.BigSmile)
-            }
-        else if((code == "[B@1963006a")){
-            println("Brinkl")
-                furhat.gesture(Gestures.Blink)
-            }
-        else if((code == "[B@7fbe847c")){
-            println("Frown")
-                furhat.gesture(Gestures.BrowFrown)
-            }
-        else if((code == "[B@41975e01")){
-            println("Browraise")
-                furhat.gesture(Gestures.BrowRaise)
-            }
-        else if((code == "[B@c2e1f26")){
-            println("Closeeyes")
-                furhat.gesture(Gestures.CloseEyes) //remove it later or open the eyes
-            }
-        else if((code == "[B@dcf3e99")){
-            println("ExpressAngr")
-                furhat.gesture(Gestures.ExpressAnger)
-            }
-        else if((code == "[B@7dc5e7b4")){
-            println("Disgust")
-                furhat.gesture(Gestures.ExpressDisgust)
-            }
-        else if((code == "[B@1ee0005")){
-            println("ExpressFear")
-                furhat.gesture(Gestures.ExpressFear)
-            }
-        else if((code == "[B@75a1cd57")){
-            println("Sad")
-                furhat.gesture(Gestures.ExpressSad)
-            }
-        else if((code == "[B@6f2b958e")){
-            println("OpenEyes")
-                furhat.gesture(Gestures.OpenEyes)
-            }
-        else if((code == "[B@626b2d4a")){
-            println("Thoughful")
-                furhat.gesture(Gestures.Thoughtful)
-            }
-        else if((code == "[B@1c4af82c")){
-            println("Wink")
-                furhat.gesture(Gestures.Wink)
-            }
-        terminate()
-    }
-
-}
-
-fun parseResponse(response: String): State = state {
-    onEntry {
-        println("inupe value to the funtion"+response)
-        val regex = Regex("((?<=;)|(?=;))")
-        val emojiRegex = Regex("[\\p{So}]")
-        val unicode = StringBuilder()
-
-        val response2 = response.replace(emojiRegex, ";")
-        //println("the 2 respont ="+response2)
-        val splitResponse = response2.split(";")
-        //println("the 2 respont ="+splitResponse[0])
-        val emojis = emojiRegex.findAll(response).map { it.value }.toList()
-        var numEmo = 0
-        for(res in splitResponse) {
-            if (res != null && res != "") {
-                if (res.equals(";")) {
-                    println("Gesture if function triggered")
-                    val byteArry = ((emojis[numEmo]).toByteArray())
-                    gesture(byteArry.toString())
-                    numEmo++
-                } else {
-                    println("the responce after filtering :"+res)
-                    furhat.say(res)
-                }
-            }
-            terminate()
-    }
-    }
-
-}  */
-
