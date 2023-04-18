@@ -187,7 +187,6 @@ val Robotarium: State = state(Parent) {
 
     onResponse<DontKnow> {
         furhat.ledStrip.solid(java.awt.Color(127,0,0))
-        var intent = ((it.intent).toString()).dropLast(2)
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
         furhat.ledStrip.solid(java.awt.Color(0,127,0))
@@ -195,7 +194,6 @@ val Robotarium: State = state(Parent) {
     }
     onResponse<Cafe> {
         furhat.ledStrip.solid(java.awt.Color(127,0,0))
-        var intent = ((it.intent).toString()).dropLast(2)
         response=" there is no cafe inside robotarium -(if on further ask) presence of coffee machine in the building - cafe in the university like elements,piece "
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
@@ -204,7 +202,6 @@ val Robotarium: State = state(Parent) {
     }
     onResponse<Toilet> {
         furhat.ledStrip.solid(java.awt.Color(127,0,0))
-        var intent = ((it.intent).toString()).dropLast(2)
         response=" there is toilets inside robotarium -(if on further ask) just take the left "
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))
@@ -222,7 +219,6 @@ val Robotarium: State = state(Parent) {
     }
     onResponse<Appreciate> {
         furhat.ledStrip.solid(java.awt.Color(127,0,0))
-        var intent = ((it.intent).toString()).dropLast(2)
         response=" aww thank you make murphy appreciate the user back maybe even greet the user based on the user's response"
         var replygpt= getNLGResponseFromGPT((response))
         call(theparser(replygpt))

@@ -25,7 +25,7 @@ fun getNLGResponseFromGPT(input: String, histval: Int = 10): String {
 
 
     //Formal prompt
-
+/*
     var conversationInput= "The following is a conversation with an AI assistant. The assistants name is Murphy who is serious and informative. Murphy works as a receptionist in a building called the National Robotarium. Murphy has to talk to Visitor.Murphy has to talk to Visitor.If the Visitor ask only then give additional information.\n"
     if (input.trim().isNotEmpty()) {
         conversationInput += "Here are some additional information which may be used if required :\n"
@@ -34,11 +34,11 @@ fun getNLGResponseFromGPT(input: String, histval: Int = 10): String {
     conversationInput+= "\n Here are the past conversations between Murphy and Visitor :\n"
     conversationInput+=history
     conversationInput+="\n Murphy should now produce a formal response. Response should be no longer than 3 sentences and murphy is not required to greet Visitor and murphy should try to summarise whatever it says.Dont try to repeat what was told in previous conversations. Also if the question is asked out of the context, Murphy should ask the user to confirm the visitor's question which is most related to the information given above in a very formal way. Do not attempt to fabricate or hallucinate any answers. Murphy: ?"
-
+*/
 
 
     //Informal prompt
-    /*var conversationInput= "The following is a conversation with an AI assistant. The assistants name is Murphy who is helpful, creative, clever, and very friendly. Murphy works as a receptionist in a building called the National Robotarium. Murphy has to talk to Visitor.If the Visitor ask only then give additional information.\n"
+    var conversationInput= "The following is a conversation with an AI assistant. The assistants name is Murphy who is helpful, creative, clever, and very friendly. Murphy works as a receptionist in a building called the National Robotarium. Murphy has to talk to Visitor.If the Visitor ask only then give additional information.\n"
     if (input.trim().isNotEmpty()) {
         conversationInput += "Here are some additional information which may be used if required :\n"
         conversationInput += input
@@ -46,7 +46,7 @@ fun getNLGResponseFromGPT(input: String, histval: Int = 10): String {
     conversationInput+= "\n Here are the past conversations between Murphy and Visitor :\n"
     conversationInput+=history
     conversationInput+="\n Murphy should now produce a casual and engaging response with appropriate gestures of format \":gesture:\". The gestures can be added to appropriate places between or in the end. Response should be no longer than 3 sentences and murphy is not required to greet Visitor the response must be short and concise as possible omitting unwanted information . Also if the question is asked out of the context, Murphy should ask the user to confirm the visitor's question which is most related to the information given above in an informal way with gestures. Do not attempt to fabricate or hallucinate any answers. Murphy: ?"
-    */
+
 
     var response = ""
     val lengthofprompt = conversationInput.length
